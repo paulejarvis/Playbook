@@ -1,0 +1,13 @@
+//sample repo structure for each compliance framework
+
+Company
+> Repo: ISO 9001
+>> READ-ME: Explain in plain english what this is and why it's important and what it covers
+>>> Branch: subset of ISO 9001 / specific set of requirements
+>>> Branch Owner
+//repeat below as needed
+>>>> requirement
+>>>> control / evidence
+>>>> test plan (with evidence storage plan and owner)
+//control and test plan are written in process code that generates a visual (Mermaid github?)
+>>>> unit test pass Y/N
