@@ -1,4 +1,20 @@
-//sample repo structure for each compliance framework
+## Model of how each repo / compliance framework should be set up
+
+### Tech needs
+
+* Code that can draw the process AND model the underlying data structure
+* Only the current process should be visible but the process are integrated
+in the DB
+* How to synchronize edits between GUI (visual of the process) and the process
+code?
+
+#### Tech to explore
+
+- Mermaid project on github (way to draw diagrams from code)
+- Neo4j graph database
+- Prologram neo4j browser
+
+#### Tree of repo structure 
 
 Company
 > Repo: ISO 9001
