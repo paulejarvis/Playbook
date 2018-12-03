@@ -1,0 +1,29 @@
+## Model of how each repo / compliance framework should be set up
+
+### Tech needs
+
+* Code that can draw the process AND model the underlying data structure
+* Only the current process should be visible but the process are integrated
+in the DB
+* How to synchronize edits between GUI (visual of the process) and the process
+code?
+
+#### Tech to explore
+
+- Mermaid project on github (way to draw diagrams from code)
+- Neo4j graph database
+- Prologram neo4j browser
+
+#### Tree of repo structure 
+
+Company
+> Repo: ISO 9001
+>> READ-ME: Explain in plain english what this is and why it's important and what it covers
+>>> Branch: subset of ISO 9001 / specific set of requirements
+>>> Branch Owner
+//repeat below as needed
+>>>> requirement
+>>>> control / evidence
+>>>> test plan (with evidence storage plan and owner)
+//control and test plan are written in process code that generates a visual (Mermaid github?)
+>>>> unit test pass Y/N
