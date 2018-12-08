@@ -1,0 +1,151 @@
+digraph engineering_hiring {
+
+/* Graph */
+
+  //rankdir = LR //(right to left; good for process not org chart or network diagram)
+  //splines = ortho //(right angles)
+  ratio = auto
+
+/* Nodes */
+
+  "Start" [
+  shape = Mdiamond
+  label = "Start"
+  ]
+
+  "Recruiter Screen" [
+  shape = box
+  label = "Recruiter Screen\n Hold a 45-minute phone call to qualify the candidate
+  and learn about their goals"
+  ]
+
+  "Team Screen" [
+  shape = box
+  label = "Team Screen\n Prepare a 60-minute video call to test a specific (and
+  critical) skill before an onsite interview"
+  ]
+
+  "Onsite Interview" [
+  shape = box
+  label = "Onsite Interview\n Conduct 5-6 interviews with different team members,
+  each focusing on a critical skills"
+  ]
+
+  "Candidate Debrief Meeting" [
+  shape = box
+  label = "Candidate Debrief Meeting\n Every interviewer meets to discuss their
+  feedback and decide on an offer"
+  ]
+
+  "Candidate Review" [
+  shape = box
+  label = "Candidate Review\n A small panel reviews all feedback for interview
+  candidates in the previous 48 hours to ensure quality"
+  ]
+
+  "Reference Checks and Offer" [
+  shape = box
+  label = "Reference Checks and Offer\n Make an offer to the candidate after completing
+  their reference checks"
+  ]
+
+  "Hired" [
+  shape = invhouse
+  label = "Candidate hired"
+  ]
+
+
+  "Churn Call" [
+  shape = Msquare
+  label = "Churn Call with Candidate\n
+  Recruiting Manager calls the\n candidate to learn why they\n declined our offer
+  and identify\n how we can improve"
+  ]
+
+/* Edges */
+
+    "Start" -> "Recruiter Screen" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Recruiter Screen" -> "Team Screen" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Team Screen" -> "Onsite Interview" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Onsite Interview" -> "Candidate Debrief Meeting" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Candidate Debrief Meeting" -> "Candidate Review" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Candidate Review" -> "Reference Checks and Offer" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Reference Checks and Offer" -> "Hired" [
+      xlabel = "If they pass"
+      color = "green"
+    ]
+
+    "Reference Checks and Offer" -> "Churn Call" [
+      xlabel = "If candidate rejects the offer"
+      color = "red"
+    ]
+
+/* If including a path to "Rejected" uncomment all of the below
+
+    "Rejected" [
+    shape = Msquare
+    label = "Candidate rejected"
+    ]
+
+    "Recruiter Screen" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+    "Team Screen" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+    "Onsite Interview" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+    "Candidate Debrief Meeting" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+    "Candidate Review" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+    "Reference Checks and Offer" -> "Rejected" [
+      xlabel = "If they fail"
+      color = "red"
+    ]
+
+*/
+
+  }
+
+/* Notes */
+/*
+*
+*/
