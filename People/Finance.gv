@@ -1,6 +1,23 @@
-digraph {
+digraph Finance {
+
+/* Graph */
+
+  /*
+  *rankdir=LR (right to left; good for process not org chart or network diagram)
+  *splines=ortho (right angles)
+  *
+  *
+  */
+
+/* Nodes */
+
+/* Edges */
+
     a -> b;
-    b -> c;
-    c -> d;
-    d -> a;
-}
+
+  }
+
+/* Notes */
+/*
+*
+*/
