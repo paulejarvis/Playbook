@@ -11,9 +11,13 @@ digraph Finance {
 
 /* Nodes */
 
+
+
 /* Edges */
 
-    a -> b;
+    "Node1" -> "Node2" [
+      xlabel = "test label"
+    ]
 
   }
 
