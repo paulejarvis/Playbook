@@ -1,3 +1,6 @@
+/* https://stripe.com/atlas/guides/scaling-eng
+* captures the graph there; not enriched */
+
 digraph engineering_hiring {
 
 /* Graph */
@@ -14,37 +17,37 @@ digraph engineering_hiring {
   ]
 
   "Recruiter Screen" [
-  shape = box
+  shape = record
   label = "Recruiter Screen\n Hold a 45-minute phone call to qualify the candidate
   and learn about their goals"
   ]
 
   "Team Screen" [
-  shape = box
+  shape = record
   label = "Team Screen\n Prepare a 60-minute video call to test a specific (and
   critical) skill before an onsite interview"
   ]
 
   "Onsite Interview" [
-  shape = box
+  shape = record
   label = "Onsite Interview\n Conduct 5-6 interviews with different team members,
   each focusing on a critical skills"
   ]
 
   "Candidate Debrief Meeting" [
-  shape = box
+  shape = record
   label = "Candidate Debrief Meeting\n Every interviewer meets to discuss their
   feedback and decide on an offer"
   ]
 
   "Candidate Review" [
-  shape = box
+  shape = record
   label = "Candidate Review\n A small panel reviews all feedback for interview
   candidates in the previous 48 hours to ensure quality"
   ]
 
   "Reference Checks and Offer" [
-  shape = box
+  shape = record
   label = "Reference Checks and Offer\n Make an offer to the candidate after completing
   their reference checks"
   ]
