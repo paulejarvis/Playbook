@@ -1,0 +1,40 @@
+digraph NAME {
+
+/* Graph */
+
+  /*
+  *rankdir=LR (right to left; good for process not org chart or network diagram)
+  *splines=ortho (right angles)
+  *
+  *
+  */
+
+/* Nodes */
+
+  "Record" [
+  shape = record
+  label = "
+      <top> Text|
+      <middle> Text|
+      <bottom> Text|
+    "
+  ]
+
+  "Node" [
+  shape =
+  label = "text \n new line"
+
+  ]
+
+/* Edges */
+
+    "Node1" -> "Node2" [
+      xlabel = "test label"
+    ]
+
+  }
+
+/* Notes */
+/*
+*
+*/
