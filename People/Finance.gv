@@ -11,6 +11,13 @@ digraph NAME {
 
 /* Nodes */
 
+
+
+
+
+#look at houw a real accounting org should be structured...
+
+
   "Record" [
   shape = record
   label = "
