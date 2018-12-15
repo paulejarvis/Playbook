@@ -9,11 +9,22 @@ digraph NAME {
   *
   */
 
-
-#use subgraph for engineers who are interviews?
-# then use a node connection to tie them to the interview process 
-
 /* Nodes */
+
+
+#taking ideas from stripe
+
+- classes
+- meet co-founders
+answer support tickets
+get a mentor
+review 45/90/180 day expectations
+-- checkins for these
+- get staffed on first project / team
+
+
+
+
 
   "Record" [
   shape = record
