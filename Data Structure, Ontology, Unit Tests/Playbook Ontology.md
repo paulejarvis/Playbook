@@ -28,12 +28,14 @@ others are unique to specific object types.
   * Name (Label)
   * Title
   * Team
+  * Role (this is process-dependent and can differ from Title)
   * Qualifications (CPA, PMP, etc.)
   * Location
   * Email
   * Phone Number
   * Start Date
   * Employee ID (Primary Key)
+  * Contextualized (Y/N; see [Contextualization](#Contextualization.md)
 * Process
   * Description (Label)
   * Type
