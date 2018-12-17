@@ -26,6 +26,7 @@ others are unique to specific object types.
 
 * People
   * Name (Label)
+  * Company
   * Title
   * Team
   * Role (this is process-dependent and can differ from Title)
@@ -54,6 +55,7 @@ others are unique to specific object types.
   * Provider
   * Version
   * Overview
+  * Usecases (i.e. Applicant Tracking System, CRM, Payroll, etc.)
   * Implementation Date
   * Authentication
   * Hosting
