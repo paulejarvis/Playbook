@@ -48,19 +48,37 @@ others are unique to specific object types.
   * Time Required
   * Notes
 * Technology
+  * Application Name (Label)
+  * Provider
+  * Version
+  * Overview
+  * Implementation Date
+  * Authentication
+  * Hosting
 
 ### Relationships
 
-
-
-
-
-
-Include unit tests
-
-
-
-
-
-PARIS - relationship of people to process?
-what are the relationships of ppeople to tech - user, admin, sysadmin,   
+* People <-> Process
+  * Responsible (Actually completes the task; can be shared across multiple individuals)
+  * Accountable (Answerable for the activity or decision; only one person)
+  * Reviewer (Double-checks the work or provides a second set of eyes; can be multiple people)
+  * Consulted (Provides input prior to a final decision; can be multiple people)
+  * Sign-Off (Final confirmation or approval; often an executive or Board Member)
+* People <-> Technology
+  * User (this could be expanded to more specific permissions profiles)
+  * Workflow Administrator
+  * Business Owner
+  * System Administrator
+* Process <-> Technology
+  * Upload / Import or Download / Export
+  * Create / Delete entry or record
+  * Update
+* People <-> People
+  * Reports to / Manages
+  * Supervises / Supervised by
+  * Substituting for / Covered by (for leaves of absence)
+* Process <-> Process
+  * Decision Outputs (Boolean)
+* Technology <-> Technology
+  * Automated Connection (API or script)
+  * Manual Connection
