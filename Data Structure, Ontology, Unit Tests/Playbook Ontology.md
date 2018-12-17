@@ -35,7 +35,7 @@ others are unique to specific object types.
   * Phone Number
   * Start Date
   * Employee ID (Primary Key)
-  * Contextualized (Y/N; see [Contextualization](#contextualization.md))
+  * Contextualized (Y/N; see [Contextualization](#https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
 * Process
   * Description (Label)
   * Type
