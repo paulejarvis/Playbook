@@ -35,7 +35,7 @@ others are unique to specific object types.
   * Phone Number
   * Start Date
   * Employee ID (Primary Key)
-  * Contextualized (Y/N; see [Contextualization](#Contextualization.md)
+  * Contextualized (Y/N; see [Contextualization](#contextualization.md))
 * Process
   * Description (Label)
   * Type
