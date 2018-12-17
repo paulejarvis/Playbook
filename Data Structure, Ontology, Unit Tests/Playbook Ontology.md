@@ -57,6 +57,7 @@ others are unique to specific object types.
   * Implementation Date
   * Authentication
   * Hosting
+  * Contextualized (Y/N; see [Contextualization](/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
 
 ### Relationships
 
