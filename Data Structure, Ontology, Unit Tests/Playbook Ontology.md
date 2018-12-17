@@ -78,7 +78,7 @@ others are unique to specific object types.
   * Supervises / Supervised by
   * Substituting for / Covered by (for leaves of absence)
 * Process <-> Process
-  * Decision Outputs (Boolean)
+  * Decision Outputs (conditional; only one option can be true)
 * Technology <-> Technology
   * Automated Connection (API or script)
   * Manual Connection
