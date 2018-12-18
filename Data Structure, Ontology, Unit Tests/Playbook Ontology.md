@@ -25,11 +25,11 @@ Properties describe objects. Some properties are shared across object types whil
 others are unique to specific object types.
 
 * People
-  * Name (Label)
+  * Name 
   * Company
   * Title
   * Team
-  * Role (this is process-dependent and can differ from Title)
+  * Role (this is process-dependent and can differ from Title; Label)
   * Qualifications (CPA, PMP, etc.)
   * Location
   * Email
