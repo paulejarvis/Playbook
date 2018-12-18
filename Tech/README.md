@@ -1,7 +1,16 @@
-Inputs
-- Process (user-input; ingest from visio)
-- tech (nmap)
-- people (AD)
+## Overview
+
+Playbook is built on the neo4j graph database. See the [Playbook Architecture](#https://github.com/paulejarvis/Playbook/blob/master/Tech/Playbook%20Architecture.png)) for more details.
+
+### Inputs
+
+* People
+  * Organizational directory (i.e. Active Directory)
+* Process
+  * Ingest existing process documentation (Visio, Excel, etc)
+  * User-defined process input via the UI [See User Input](#/User%Input)
+* Technology
+  * Systems map (such as nmap)
 
 inputs --> py2neo --> neo4j
 
