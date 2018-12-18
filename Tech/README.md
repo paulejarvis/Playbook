@@ -1,6 +1,6 @@
 ## Overview
 
-Playbook is built on the neo4j graph database. See the [Playbook Architecture](#https://github.com/paulejarvis/Playbook/blob/master/Tech/Playbook%20Architecture.png) for more details.
+Playbook is built on the neo4j graph database. See the [Playbook Architecture](https://github.com/paulejarvis/Playbook/blob/master/Tech/Playbook%20Architecture.png) for more details.
 
 ### Inputs
 
@@ -8,7 +8,7 @@ Playbook is built on the neo4j graph database. See the [Playbook Architecture](#
   * Organizational directory (i.e. Active Directory)
 * Process
   * Ingest existing process documentation (Visio, Excel, etc)
-  * User-defined process input via the UI [See User Input](#https://github.com/paulejarvis/Playbook/tree/master/Tech/User%20Input)
+  * User-defined process input via the UI [See User Input](https://github.com/paulejarvis/Playbook/tree/master/Tech/User%20Input)
 * Technology
   * Systems map (such as nmap)
 
@@ -20,4 +20,4 @@ Playbook is built on the neo4j graph database. See the [Playbook Architecture](#
 ### Git
 
 * Git is used to back up all the data in neo4j
-* [Git Statistics](#https://lukasmestan.com/git-quick-stats/) provides metadata on git activity
+* [Git Statistics](https://lukasmestan.com/git-quick-stats/) provides metadata on git activity
