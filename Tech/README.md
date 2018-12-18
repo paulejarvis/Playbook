@@ -8,7 +8,7 @@ Playbook is built on the neo4j graph database. See the [Playbook Architecture](h
   * Organizational directory (i.e. Active Directory)
 * Process
   * Ingest existing process documentation (Visio, Excel, etc)
-  * User-defined process input via the UI [See User Input](https://github.com/paulejarvis/Playbook/tree/master/Tech/User%20Input)
+  * User-defined process input via the UI ([See User Input](https://github.com/paulejarvis/Playbook/tree/master/Tech/User%20Input))
 * Technology
   * Systems map (such as nmap)
 
