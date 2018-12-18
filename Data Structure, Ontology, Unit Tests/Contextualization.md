@@ -17,5 +17,9 @@ to identify who would actually perform this function.
 Not all people or technologies need to be contextualized - in some cases a placeholder or "dummy"
 object is used to represent all instances of this object. An example would be using a "Candidate"
 object in all hiring or interviewing workflows without contextualizing the candidate by tying the
-"Candidate" object to an actual person. This also allows for capturing workflows without
-infringing on PII regulations. 
+"Candidate" object to an actual person. Another example might be creating an "Interview Team" object that
+can be tied to multiple individuals but functions as a single object for the purpose of
+process design. This also allows for capturing workflows without infringing on PII regulations.
+
+In other cases, a dummy object is first used (a Person with only a Title or Role but no identifying details) to quickly design the process and later contextualized
+against the Directory to confirm who within the organization is going to perform the assigned role within the workflow.
