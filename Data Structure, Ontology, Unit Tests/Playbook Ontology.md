@@ -25,7 +25,7 @@ Properties describe objects. Some properties are shared across object types whil
 others are unique to specific object types.
 
 * People
-  * Name 
+  * Name
   * Company
   * Title
   * Team
@@ -40,8 +40,7 @@ others are unique to specific object types.
 * Process
   * Description (Label)
   * Type
-    * Start / Input
-    * End / Output
+    * Input / Output (either the end of one process, the start of another process, or both)
     * Action
     * Decision
   * Workflow
