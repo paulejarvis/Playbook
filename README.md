@@ -27,5 +27,5 @@ process design
 
 ## What else is included in Playbook?
 
-* The text of key regulatory frameworks is stored along with guidance, unit tests, and
+* The text of major [regulatory frameworks](#https://github.com/paulejarvis/Playbook/tree/master/Regulatory%20Frameworks) is stored along with guidance, unit tests, and
 templates for designing compliant processes
