@@ -48,7 +48,7 @@ others are unique to specific object types.
   * Workflow
   * Stage
   * Process_ID (derived from Workflow + Stage) (Primary Key)
-  * Control_Framework (Sarbanex-Oxley, Revenue 606, GDPR, etc.)
+  * Control_Framework (Sarbanes-Oxley, Revenue 606, GDPR, etc.)
   * Time Required
   * Notes
 * Technology

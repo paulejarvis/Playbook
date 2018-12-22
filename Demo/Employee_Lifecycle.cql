@@ -1,19 +1,6 @@
 //Description
 //Tracks the full lifecycle of an employee from hiring to exit
 
-//initializing
-
-from py2neo.data import Node, Relationship
-
-//nodes
-//people objects
-
-ppl1 = Node("People", Role="Hiring Manager")
-ppl2 = Node("People", Role="Candidate")
-ppl3 = Node("People", Role="Recruiter")
-ppl4 = Node("People", Role="Compensation Manager")
-ppl5 = Node("People", Role="Interviewing Team")
-
 //process objects
 
 Processes
@@ -45,33 +32,13 @@ Technology
 * External Careers Page
 
 
-//relationships
-
-1. Hiring manager "CREATES" new role in ATS systems
-2. Recruiter "CREATES" new job posting on External Careers Page
-3. 
-
-//what unit tests are applicable
-
-is the position posted on the external website before an offer is made
-is there secondary review of the comp package by comp manager before hiring manager sends an offer?
-
-
-
-
-
-
-
-
-
-
 //nodes
 
 CREATE (
 
-  s:Start
+  io1:Input-Output
     {
-      Process: "Engineering Interview",
+      Workflow: "Engineering Interview",
       Label: "Candidate enters interview process"
     }
 ),
@@ -79,7 +46,7 @@ CREATE (
 (
   p1:Process
     {
-      Process: "Engineering Interview",
+      Workflow: "Engineering Interview",
       Label: "Recruiter Screen\n 45-minute phone call"
     }
 ),
@@ -87,7 +54,7 @@ CREATE (
 (
   p2:Process
     {
-      Process: "Engineering Interview",
+      Workflow: "Engineering Interview",
       Label: "Team Screen\n 60 minute video call"
     }
 ),
@@ -112,10 +79,4 @@ CREATE
 //return
 
 Return
-  s,
-  p1,
-  p2,
-  p3,
-  sch,
-  pass1,
-  pass2
+//list out nodes to return 
