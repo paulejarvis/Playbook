@@ -27,7 +27,7 @@ others are unique to specific object types.
 * People
   * Name
   * Company
-  * Title
+  * Title (business title )
   * Team
   * Role (this is process-dependent and can differ from Title; Label)
   * Qualifications (CPA, PMP, etc.)
@@ -37,12 +37,14 @@ others are unique to specific object types.
   * Start Date
   * Employee ID (Primary Key)
   * Contextualized (Y/N; see [Contextualization](/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
+  * Individual or Group
 * Process
   * Description (Label)
-  * Type
+  * Process Stage
     * Input / Output (either the end of one process, the start of another process, or both)
     * Action
     * Decision
+  * Department
   * Workflow
   * Stage
   * Process_ID (derived from Workflow + Stage) (Primary Key)
