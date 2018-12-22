@@ -6,6 +6,7 @@ Playbook is built on the neo4j graph database. See the [Playbook Architecture](h
 
 * People
   * Organizational directory (i.e. Active Directory)
+  * https://labs.mwrinfosecurity.com/blog/visualising-organisational-charts-from-active-directory/
 * Process
   * Ingest existing process documentation (Visio, Excel, etc)
   * User-defined process input via the UI ([See User Input](https://github.com/paulejarvis/Playbook/tree/master/Tech/User%20Input))
@@ -16,6 +17,7 @@ Playbook is built on the neo4j graph database. See the [Playbook Architecture](h
 
 * Py2Neo for connecting to neo4j
 * Pyviz and viz.js for Graphviz visualization
+* https://github.com/neo4j/neo4j/tree/2.3/community/graphviz
 
 ### Git
 
