@@ -18,3 +18,7 @@ VEVRAA prohibits federal contractors and subcontractors from discriminating in e
 * Job Listings: The regulations clarify that when listing their job openings, contractors must provide that information in a manner and format permitted by the appropriate State or local job service, so that it can access and use the information to make the job listings available to job seekers.
 
 * Records Access: The regulations clarify that contractors must allow OFCCP to review documents related to a compliance check or focused review, either on‐site or off‐site, at OFCCP’s option. In addition, the regulations require contractors, upon request, to inform OFCCP of all formats in which it maintains its records and provide them to OFCCP in whichever of those formats OFCCP requests.
+
+### Links
+
+https://www.dol.gov/ofccp/regs/compliance/vevraa.htm 
