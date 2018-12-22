@@ -3,10 +3,7 @@
 
 //process objects
 
-Processes
-1. Open new role
-  * Hiring Manager
-  * ATS system
+
 2. Confirm job posting on external careers page
   * Recruiter
   * Company Website
@@ -22,14 +19,6 @@ Processes
   * on-boarding
   * new hire IT provisioning
   * payroll (confirm direct deposit )
-
-//technology objects
-
-Technology
-* Applicant Tracking System
-* Compensation Tool
-* Meeting
-* External Careers Page
 
 
 //nodes
@@ -79,4 +68,4 @@ CREATE
 //return
 
 Return
-//list out nodes to return 
+//list out nodes to return

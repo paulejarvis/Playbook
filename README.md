@@ -7,13 +7,12 @@ Playbook is the operational knowledge base for the modern enterprise.
 ## How does Playbook work?
 
 Playbook models the people, processes, and technology comprising the enterprise as data
-and captures this in a graph database, allowing analysis of the people, processes, and technologies
+and captures this in a graph database, allowing analysis of the people, processes, technologies,
 and the relationships between them.
 
 ## What can an organization accomplish with Playbook?
 
 * Integrate independent processes to understand the overlaps and relationships within the organization
-
 * Manage the database (which collectively forms an "operational knowledge base") with branching, version control, and nuanced permissions (a Git-style workflow), allowing end-users and individual contributors within the organization
 to suggest changes and submit them for review and approval
 * Design "unit tests" to evaluate whether the operational design is compliant with
