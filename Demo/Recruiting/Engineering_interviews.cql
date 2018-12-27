@@ -87,7 +87,7 @@ CREATE
     o11:Process
      {
        state: "Action",
-       description: "Reject candidate",
+       description: "Close candidate",
 //       policy: "Finance",
        time: 0.5,
        department: "Recruiting",
@@ -142,3 +142,23 @@ CREATE
        workflow: "Engineering interviews"
      }
   )
+
+//Relationships
+
+CREATE
+
+  (o4)-[:THEN]->(o5),
+  (o5)-[:THEN]->(o6),
+  (o6)-[:THEN]->(o7),
+  (o7)-[:THEN {decision:'Offer approved'}]->(o8),
+  (o8)-[:THEN]->(o9),
+  (o9)-[:THEN {external: 'Candidate accepts offer'}]->(o12),
+  (o9)-[:THEN {external: 'Candidate declines offer'}]->(o10),
+  (o12)-[:THEN]->(o13),
+  (o13)-[:THEN]->(o14),
+  (o14)-[:YES {decision:'No new hires needed'}]->(o15),
+  (o14)-[:NO {decision: 'Continue interviews'}]->(o4),
+  (o5)-[:EXIT {exit: 'Candidate rejected'}]->(o11), //PS reject
+  (o6)-[:EXIT {exit: 'Candidate rejected'}]->(o11), //OS reject
+  (o7)-[:EXIT {exit: 'Candidate rejected'}]->(o11), //RT reject
+  (o12)-[:EXIT {exit: 'Candidate rejected'}]->(o11) //background check fail reject

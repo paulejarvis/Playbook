@@ -1,13 +1,15 @@
 CREATE
 
+//nodes
+
   (
     o25:Process
      {
        state: "Action",
        description: "Create new entry in payroll system",
        policy: "Sarbanes-Oxley",
-       time: 0.5
-       department: "Finance"
+       time: 0.5,
+       department: "Finance",
        workflow: "Payroll set up"
      }
   ),
@@ -18,8 +20,13 @@ CREATE
        state: "Action",
        description: "Deposit $1 in new hire's account to confirm direct deposit",
 //       policy: "Finance",
-       time: 0.25
-       department: "Finance"
+       time: 0.25,
+       department: "Finance",
        workflow: "Payroll set up"
      }
   )
+
+//relationships
+
+CREATE
+  (o25)-[:THEN]->(o26)

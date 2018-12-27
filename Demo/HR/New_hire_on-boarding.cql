@@ -58,4 +58,27 @@ CREATE
        department: "HR",
        workflow: "New hire on-boarding"
      }
+  ),
+
+  (
+    o21:Process
+     {
+       state: "Input / Output",
+       description: "New hire ready for staffing assignment",
+//       policy: "Finance",
+//       time: 0.5,
+       department: "HR",
+       workflow: "New hire on-boarding"
+     }
   )
+
+//relationships
+
+CREATE
+
+  (o16)-[:THEN]->(o17),
+  (o17)-[:THEN]->(o18),
+  (o18)-[:THEN]->(o19),
+  (o19)-[:YES]->(o20),
+  (o19)-[:NO]->(o21),
+  (o20)-[:THEN]->(o21)

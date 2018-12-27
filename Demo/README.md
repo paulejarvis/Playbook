@@ -18,9 +18,7 @@
 
 * all nodes integrated on the graph
 * however the code lives in separate branches within each Department
-* Should we create separate folders for people and technology at the org level? 
-
-
+* Should we create separate folders for people and technology at the org level?
 
 ## Template for new nodes in Cypher
 

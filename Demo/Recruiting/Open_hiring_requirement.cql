@@ -33,3 +33,10 @@ CREATE
        workflow: "Open hiring requirement"
      }
   )
+
+//relationships
+
+CREATE
+
+  (o1)-[:THEN]->(o2),
+  (o2)-[:YES]->(o3)

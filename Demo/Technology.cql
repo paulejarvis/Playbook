@@ -5,63 +5,62 @@ CREATE
   (
     t1:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "Lever",
+       function: "Applicant tracking system",
+       provider: "Lever"
      }
   ),
 
   (
-    t1:Technology
+    t2:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "External Careers Page",
+       function: "External Careers Page",
+       provider: "Internal"
      }
   ),
 
   (
-    t1:Technology
+    t3:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "Compensation Tool",
+       function: "Compensation details and guidance for employees",
+       provider: "Internal"
      }
   ),
 
   (
-    t1:Technology
+    t4:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "Talentwise",
+       function: "Background check",
+       provider: "Talentwise"
      }
   ),
 
   (
-    t1:Technology
+    t5:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "Workday",
+       function: "ERP",
+       provider: "Workday"
      }
   ),
 
   (
-    t1:Technology
+    t6:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "AssetExplorer",
+       function: "IT asset tracking",
+       provider: "ManageEngine"
      }
   ),
 
   (
-    t1:Technology
+    t7:Technology
      {
-       application: "Senior VP",
-       function: "Hiring Manager",
-     }
-  ),
-
-  (
-    t1:Technology
-     {
-       application: "Senior VP",
-       function: "Hiring Manager",
+       application: "Workforce Now",
+       function: "Payroll system",
+       provider: "ADP"
      }
   )

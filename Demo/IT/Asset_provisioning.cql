@@ -18,7 +18,7 @@ CREATE
        state: "Action",
        description: "Provision Windows laptop",
 //       policy: "Finance",
-       time: 1
+       time: 1,
        department: "IT",
        workflow: "Asset provisioning"
      }
@@ -44,6 +44,15 @@ CREATE
 //       policy: "Finance",
        time: 0.5,
        department: "IT",
-       workflow: "Asset provisioning"       
+       workflow: "Asset provisioning"
      }
   )
+
+//Relationships
+
+CREATE
+
+  (o21)-[:THEN {decision:'Windows selected'}]->(o22),
+  (o21)-[:THEN {decision:'Mac selected'}]->(o23),
+  (o22)-[:THEN]->(o24),
+  (o23)-[:THEN]->(o24)
