@@ -1,7 +1,7 @@
 CREATE
 
   (
-    o21:Process
+    o22:Process
      {
        state: "Decision",
        description: "Choose laptop model",
@@ -13,7 +13,7 @@ CREATE
   ),
 
   (
-    o22:Process
+    o23:Process
      {
        state: "Action",
        description: "Provision Windows laptop",
@@ -25,7 +25,7 @@ CREATE
   ),
 
   (
-    o23:Process
+    o24:Process
      {
        state: "Action",
        description: "Provision Mac laptop",
@@ -37,7 +37,7 @@ CREATE
   ),
 
   (
-    o24:Process
+    o25:Process
      {
        state: "Action",
        description: "Install security certificate and connect to domain",
@@ -52,7 +52,7 @@ CREATE
 
 CREATE
 
-  (o21)-[:THEN {decision:'Windows selected'}]->(o22),
-  (o21)-[:THEN {decision:'Mac selected'}]->(o23),
-  (o22)-[:THEN]->(o24),
-  (o23)-[:THEN]->(o24)
+  (o22)-[:THEN {decision:'Windows selected'}]->(o23),
+  (o22)-[:THEN {decision:'Mac selected'}]->(o24),
+  (o23)-[:THEN]->(o25),
+  (o24)-[:THEN]->(o25)

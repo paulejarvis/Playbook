@@ -3,7 +3,7 @@ CREATE
 //nodes
 
   (
-    o25:Process
+    o26:Process
      {
        state: "Action",
        description: "Create new entry in payroll system",
@@ -15,7 +15,7 @@ CREATE
   ),
 
   (
-    o26:Process
+    o27:Process
      {
        state: "Action",
        description: "Deposit $1 in new hire's account to confirm direct deposit",
@@ -29,4 +29,4 @@ CREATE
 //relationships
 
 CREATE
-  (o25)-[:THEN]->(o26)
+  (o26)-[:THEN]->(o27)
