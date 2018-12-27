@@ -22,7 +22,6 @@ definition extends to non-technical systems such as meetings or phone calls
 ### Properties
 
 Properties describe objects. Some properties are shared across object types while others are unique to specific object types.
-* Objects have a unique "objectID" which is used to resolve / merge objects across the database
 
 * People
   * Name
