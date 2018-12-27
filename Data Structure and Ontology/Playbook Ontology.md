@@ -69,6 +69,7 @@ others are unique to specific object types.
   * Reviewer (Double-checks the work or provides a second set of eyes; can be multiple people)
   * Consulted (Provides input prior to a final decision; can be multiple people)
   * Sign-Off (Final confirmation or approval; often an executive or Board Member)
+  * Participant (Attends an event but not responsible for any action)
 * People <-> Technology
   * User (this could be expanded to more specific permissions profiles)
   * Workflow Administrator

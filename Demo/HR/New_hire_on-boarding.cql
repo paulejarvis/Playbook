@@ -52,7 +52,7 @@ CREATE
     o20:Process
      {
        state: "Action",
-       description: "Receive corporate card",
+       description: "Issue corporate card",
 //       policy: "Finance",
        time: 0.5,
        department: "HR",

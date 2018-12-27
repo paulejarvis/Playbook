@@ -23,16 +23,6 @@ CREATE
   ),
 
   (
-    p3:People
-     {
-//       name: "real name",
-//       title: " ",
-       role: "Candidate"
-//       team: "text"
-     }
-  ),
-
-  (
     p4:People
      {
 //       name: "real name",
