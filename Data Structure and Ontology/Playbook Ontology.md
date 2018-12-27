@@ -23,6 +23,7 @@ definition extends to non-technical systems such as meetings or phone calls
 
 Properties describe objects. Some properties are shared across object types while
 others are unique to specific object types.
+* Objects have a unique "objectID" which is used to resolve / merge objects across the database
 
 * People
   * Name
@@ -37,7 +38,6 @@ others are unique to specific object types.
   * Start Date
   * Employee ID (Primary Key)
   * Contextualized (Y/N; see [Contextualization](/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
-  * Individual or Group
 * Process
   * Description (Label)
   * Process Stage
@@ -47,16 +47,15 @@ others are unique to specific object types.
   * Department
   * Workflow
   * Stage
-  * Process_ID (derived from Workflow + Stage) (Primary Key)
   * Control_Framework (Sarbanes-Oxley, Revenue 606, GDPR, etc.)
-  * Time Required
+  * Time Required (Actions)
   * Notes
 * Technology
   * Application Name (Label)
   * Provider
   * Version
   * Overview
-  * Usecases (i.e. Applicant Tracking System, CRM, Payroll, etc.)
+  * System Type (i.e. Applicant Tracking System, CRM, Payroll, etc.)
   * Implementation Date
   * Authentication
   * Hosting
