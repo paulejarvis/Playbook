@@ -83,7 +83,7 @@ others are unique to specific object types.
   * Supervises / Supervised by
   * Substituting for / Covered by (for leaves of absence)
 * Process <-> Process
-  *
+  * Then (default connector between "Action" process nodes; assumes that the previous action had completed successfully)
   * Decision Outputs (conditional; only one option can be true)
 * Technology <-> Technology
   * Automated Connection (API or script)
