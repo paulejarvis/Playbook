@@ -1,8 +1,6 @@
 ### TO-DO
 
-* add descriptions to people relationships and master CQL 
 * sample queries for admin user
-* admin queries for admin user
 * send to adam, brandon, alexv, hamza
 
 ### Questions
