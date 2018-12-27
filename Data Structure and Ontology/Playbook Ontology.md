@@ -44,18 +44,18 @@ others are unique to specific object types.
     * Input / Output (either the end of one process, the start of another process, or both)
     * Action
     * Decision
-  * Department
-  * Workflow
+  * Department (inherited from parent folder)
+  * Workflow (inherited from file name)
   * Stage
   * Control_Framework (Sarbanes-Oxley, Revenue 606, GDPR, etc.)
   * Time Required (Actions)
   * Notes
 * Technology
-  * Application Name (Label)
+  * Application (Label)
   * Provider
   * Version
   * Overview
-  * System Type (i.e. Applicant Tracking System, CRM, Payroll, etc.)
+  * Function (i.e. Applicant Tracking System, CRM, Payroll, etc.)
   * Implementation Date
   * Authentication
   * Hosting
@@ -83,6 +83,7 @@ others are unique to specific object types.
   * Supervises / Supervised by
   * Substituting for / Covered by (for leaves of absence)
 * Process <-> Process
+  *
   * Decision Outputs (conditional; only one option can be true)
 * Technology <-> Technology
   * Automated Connection (API or script)

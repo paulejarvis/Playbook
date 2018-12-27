@@ -7,6 +7,8 @@ CREATE
        description: "Create new entry in payroll system",
        policy: "Sarbanes-Oxley",
        time: 0.5
+       department: "Finance"
+       workflow: "Payroll set up"
      }
   ),
 
@@ -17,5 +19,7 @@ CREATE
        description: "Deposit $1 in new hire's account to confirm direct deposit",
 //       policy: "Finance",
        time: 0.25
+       department: "Finance"
+       workflow: "Payroll set up"
      }
   )
