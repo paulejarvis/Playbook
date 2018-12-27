@@ -102,32 +102,44 @@ CREATE
      }
   ),
 
-  (
-    p11:People
-     {
-//       name: "real name",
-       title: "Payroll Specialist",
-       role: "Payroll Specialist",
-       team: "Finance"
-     }
-  ),
-
-  (
-    p12:People
-     {
-//       name: "real name",
-       title: "Payroll Manager",
-       role: "Payroll Manager",
-       team: "Finance"
-     }
-  )
 
 //open_hiring_requirements
 
+CREATE
+
+  (p2)-[:RESPONSIBLE]->(o1),
+  (p2)-[:RESPONSIBLE]->(o2),
+  (p2)-[:RESPONSIBLE]->(o3),
+  (p1)-[:ACCOUNTABLE]->(o1)
+
 //engineering_interviews
+
+
+
+
 
 //new_hire_on-boarding
 
 //asset_provisioning
 
 //payroll
+
+(
+  p11:People
+   {
+//       name: "real name",
+     title: "Payroll Specialist",
+     role: "Payroll Specialist",
+     team: "Finance"
+   }
+),
+
+(
+  p12:People
+   {
+//       name: "real name",
+     title: "Payroll Manager",
+     role: "Payroll Manager",
+     team: "Finance"
+   }
+)
