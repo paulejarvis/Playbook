@@ -1,7 +1,8 @@
 ### TO-DO
 
+* visios of original processes
 * sample queries for admin user
-* send to adam, brandon, alexv, hamza
+* send to brandon, alexv, hamza
 
 ### Questions
 

@@ -1,5 +1,8 @@
 //what unit tests are applicable
 
+
+can you do true / false with Cypher 
+
 is the position posted on the external website before an offer is made
 is there secondary review of the comp package by comp manager before hiring manager sends an offer?
 
