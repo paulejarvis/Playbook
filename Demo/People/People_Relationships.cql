@@ -55,6 +55,6 @@ CREATE
 
 CREATE
 
-  (p11)-[:RESPONSIBLE]->(o26),
-  (p12)-[:REVIEWER]->(o26),
-  (p11)-[:RESPONSIBLE]->(o27)
+  (p11)-[:RESPONSIBLE]->(o26), //payroll specialist is RESPONSIBLE for creating new payroll entry
+  (p12)-[:REVIEWER]->(o26), //payroll manager REVIEWS creation of new payroll entity
+  (p11)-[:RESPONSIBLE]->(o27) //payroll specialist is RESPONSIBLE for $1 test of direct deposity
