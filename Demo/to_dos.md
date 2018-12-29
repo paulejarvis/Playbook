@@ -6,7 +6,7 @@
 * unit tests
 * business queries
   * add to github folder w/context
-* send to brandon, alexv, hamza
+* send to brandon, alexv, hamza, davidJ, adamP
 
 ### Questions
 
