@@ -1,10 +1,11 @@
 ### TO-DO
 
 * visios of original processes
-  * on-boarding
   * engineering_interviews
 * add more details on the tech systems
-* sample queries for admin user
+* unit tests
+* business queries
+  * add to github folder w/context
 * send to brandon, alexv, hamza
 
 ### Questions
