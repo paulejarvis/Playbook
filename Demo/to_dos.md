@@ -1,7 +1,9 @@
 ### TO-DO
 
 * visios of original processes
-* add more details on the tech systems 
+  * on-boarding
+  * engineering_interviews
+* add more details on the tech systems
 * sample queries for admin user
 * send to brandon, alexv, hamza
 
