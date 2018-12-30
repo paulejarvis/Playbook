@@ -6,8 +6,6 @@
  * Sample queries demonstrating potential business questions
  * Unit tests on process design to test for compliance
  * Version-control workflow - branching, commits, pull requests
- * Change process node to input / output and branch off that
- * Create a visio for the process for reference
 
 ## Context
 
@@ -22,4 +20,5 @@
 
 ## Graphene
 
-* https://db-huofccwzqexb7bri6y7y.graphenedb.com:24780/browser/ 
+* https://db-huofccwzqexb7bri6y7y.graphenedb.com:24780/browser/
+* PW and username
