@@ -30,7 +30,7 @@ RETURN People.role,Process.workflow, Process.description, Process.policy, Proces
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
 
-* Who is accountable for enforcing internal policies?
+* Who is accountable or responsible for enforcing internal policies? NOTE: the differences between "Accountable" and "Responsible" are ![covered here](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md)
 
 ```Cypher
 MATCH
