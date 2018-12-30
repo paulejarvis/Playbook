@@ -16,8 +16,12 @@ are my internal policies being applied at the key moments
 * Which technology systems are being used across the business? Break it out by department and workflow
 
 ```Cypher
-
+MATCH (Process)-[r]->(Technology)
+WHERE Technology.application is not null
+Return Technology.application, Process.department, collect(Distinct Process.workflow)
 ```
+
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Tech%20systems%20by%20department%20and%20workflow.PNG)
 
 ## Operational Efficiency
 
