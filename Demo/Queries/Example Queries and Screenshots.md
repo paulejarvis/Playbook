@@ -65,5 +65,5 @@ WHERE Process.workflow IN
 RETURN Process
 ```
 
-![https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments.PNG]
-![https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments%20(1).PNG]
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments%20(1).PNG)
