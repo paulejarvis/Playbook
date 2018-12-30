@@ -7,14 +7,19 @@ What processes is each system involved in?
 what regulatory requirements apply to my hiring process?
 * search all nodes in recruiting / Engineering, to see where control framework is not null
 
-how much time am I spending on each candidate who makes it to the offer stage?
-  whos time is involved? how much time for each role?
-
-
 are my internal policies being applied at the key moments
 
 
-## Efficiency
+
+## IT Planning
+
+* Which technology systems are being used across the business? Break it out by department and workflow
+
+```Cypher
+
+```
+
+## Operational Efficiency
 
 * How much time does it take to move an engineering candidate all the way through the interview process? How much time is required from each role?
 
