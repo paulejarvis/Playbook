@@ -24,6 +24,8 @@ WHERE Process.policy IS NOT NULL
 RETURN People.role, Process.workflow, Process.description, Process.policy, Process.time
 ```
 
+![]https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/All_regulated_processes.PNG
+
 * How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
 
 ```Cypher
