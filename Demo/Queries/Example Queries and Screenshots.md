@@ -4,9 +4,6 @@ what are the process requirements per role?
 
 are my internal policies being applied at the key moments
 
-what additional processes are connected to my on-boarding
-
-
 ## Compliance
 
 * Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
@@ -28,6 +25,19 @@ RETURN People.role,Process.workflow, Process.description, Process.policy, Proces
 ```
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
+
+* Who is accountable for enforcing internal policies?
+
+```Cypher
+MATCH
+	(People)-[r]->(Process)
+WHERE
+	Process.policy =~ 'Internal policy*' AND
+    type(r) in ['RESPONSIBLE','ACCOUNTABLE']
+RETURN People.role, Process.workflow, Process.description, Process.policy, type(r)
+```
+
+![]()
 
 ## IT Planning
 
@@ -53,7 +63,7 @@ RETURN People.role, collect(Process.time)
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
 
-## Cross-functional Processes
+## Cross-Functional Processes
 
 * What steps are required for a new hire to complete on-boarding (spanning across departments)?
 
