@@ -24,7 +24,7 @@ WHERE Process.workflow = "Engineering interviews" AND People.role IS NOT NULL
 RETURN People.role, collect(Process.time)
 ```
 
-![]()
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
 
 ## Compliance
 
