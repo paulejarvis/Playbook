@@ -37,7 +37,7 @@ MATCH
 	(People)-[r]->(Process)
 WHERE
 	Process.policy =~ 'Internal policy*' AND
-    type(r) in ['RESPONSIBLE','ACCOUNTABLE']
+  type(r) in ['RESPONSIBLE','ACCOUNTABLE']
 RETURN People.role, Process.workflow, Process.description, Process.policy, type(r)
 ```
 
