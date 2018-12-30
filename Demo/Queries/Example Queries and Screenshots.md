@@ -1,8 +1,5 @@
 tech requirements per roles - this informs separation of duties & IT controls
 
-what are the process requirements per role?
-
-
 
 
 
@@ -78,7 +75,7 @@ RETURN People.role, Process.workflow, Process.description, type(r)
 ORDER BY People.role
 ```
 
-![]()
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Responsibilities%20by%20role.PNG)
 
 ## Integrating Processes Across Departments
 
