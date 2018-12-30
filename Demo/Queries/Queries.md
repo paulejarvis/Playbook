@@ -13,15 +13,21 @@ how much time am I spending on each candidate who makes it to the offer stage?
 
 are my internal policies being applied at the key moments
 
-can we have a time trigger to revisit proesses every year? should that be a proprety for timing?
 
-how mcuh time am I spending on SOX compliance? Should we hire a consultant to help streamline?
+## Compliance
 
+* Return all processes that are regulated and how much time each step takes and who owns the steps in the workflow
 
-
-//Show all the processes that are regulated and how much time each step takes and who owns the steps in the workflow
 ```Cypher
 MATCH (People)-[:RESPONSIBLE]->(Process)
 WHERE Process.policy IS NOT NULL
+RETURN People.role, Process.workflow, Process.description, Process.policy, Process.time
+```
+
+* How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
+
+```Cypher
+MATCH (People)-[:RESPONSIBLE]->(Process)
+WHERE Process.policy = "Sarbanes-Oxley"
 RETURN People.role,Process.workflow, Process.description, Process.policy, Process.time
 ```

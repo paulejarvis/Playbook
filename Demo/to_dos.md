@@ -1,10 +1,10 @@
 ### TO-DO
 
-* add more details on the tech systems
-* unit tests
 * business queries
-  * add to github folder w/context
-* send to brandon, alexv, hamza, davidJ, adamP, dad 
+    * add to github folder w/context
+    * add screenshots of output
+* unit tests
+* send to brandon, alexv, hamza, davidJ, adamP, dad
 
 ### Questions
 
