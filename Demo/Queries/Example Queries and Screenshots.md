@@ -16,7 +16,7 @@ are my internal policies being applied at the key moments
 
 ## Compliance
 
-* Return all processes that are regulated and how much time each step takes and who owns the steps in the workflow
+* Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
 
 ```Cypher
 MATCH (People)-[:RESPONSIBLE]->(Process)
