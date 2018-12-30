@@ -14,6 +14,18 @@ how much time am I spending on each candidate who makes it to the offer stage?
 are my internal policies being applied at the key moments
 
 
+## Efficiency
+
+* How much time does it take to move an engineering candidate all the way through the interview process? How much time is required from each role?
+
+```Cypher
+MATCH (People)-[r]->(Process)
+WHERE Process.workflow = "Engineering interviews" AND People.role IS NOT NULL
+RETURN People.role, collect(Process.time)
+```
+
+![]()
+
 ## Compliance
 
 * Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
