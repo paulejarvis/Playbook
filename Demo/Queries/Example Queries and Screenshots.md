@@ -2,14 +2,32 @@ tech requirements per roles - this informs separation of duties & IT controls
 
 what are the process requirements per role?
 
-What processes is each system involved in?
-
-what regulatory requirements apply to my hiring process?
-* search all nodes in recruiting / Engineering, to see where control framework is not null
-
 are my internal policies being applied at the key moments
 
+what additional processes are connected to my on-boarding
 
+
+## Compliance
+
+* Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
+
+```Cypher
+MATCH (People)-[:RESPONSIBLE]->(Process)
+WHERE Process.policy IS NOT NULL
+RETURN People.role, Process.workflow, Process.description, Process.policy, Process.time
+```
+
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/All_regulated_processes.PNG)
+
+* How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
+
+```Cypher
+MATCH (People)-[:RESPONSIBLE]->(Process)
+WHERE Process.policy = "Sarbanes-Oxley"
+RETURN People.role,Process.workflow, Process.description, Process.policy, Process.time
+```
+
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
 
 ## IT Planning
 
@@ -35,24 +53,17 @@ RETURN People.role, collect(Process.time)
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
 
-## Compliance
+## Cross-functional Processes
 
-* Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
-
-```Cypher
-MATCH (People)-[:RESPONSIBLE]->(Process)
-WHERE Process.policy IS NOT NULL
-RETURN People.role, Process.workflow, Process.description, Process.policy, Process.time
-```
-
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/All_regulated_processes.PNG)
-
-* How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
+* What steps are required for a new hire to complete on-boarding (spanning across departments)?
 
 ```Cypher
-MATCH (People)-[:RESPONSIBLE]->(Process)
-WHERE Process.policy = "Sarbanes-Oxley"
-RETURN People.role,Process.workflow, Process.description, Process.policy, Process.time
+MATCH (Process)
+WHERE Process.workflow IN
+	['Payroll set up', 'New hire on-boarding', 'Asset provisioning' ] OR
+   Process.description = "Candidate hired"
+RETURN Process
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
+![]
+![]
