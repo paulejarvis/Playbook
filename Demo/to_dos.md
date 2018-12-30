@@ -1,12 +1,10 @@
 ### TO-DO
 
-* visios of original processes
-  * engineering_interviews
 * add more details on the tech systems
 * unit tests
 * business queries
   * add to github folder w/context
-* send to brandon, alexv, hamza, davidJ, adamP
+* send to brandon, alexv, hamza, davidJ, adamP, dad 
 
 ### Questions
 
