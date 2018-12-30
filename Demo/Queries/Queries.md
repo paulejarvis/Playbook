@@ -31,3 +31,5 @@ MATCH (People)-[:RESPONSIBLE]->(Process)
 WHERE Process.policy = "Sarbanes-Oxley"
 RETURN People.role,Process.workflow, Process.description, Process.policy, Process.time
 ```
+
+(https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
