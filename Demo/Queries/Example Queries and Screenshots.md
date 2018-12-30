@@ -67,7 +67,20 @@ RETURN People.role, collect(Process.time)
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
 
-## Cross-Functional Processes
+* What process steps are owned by each role? If someone currently in that role leaves or needs to be backfilled, what does the replacement need to be capable of doing?
+
+```Cypher
+MATCH
+	(People)-[r]->(Process)
+WHERE
+	type(r) in ["ACCOUNTABLE", "RESPONSIBLE", "PARTICIPANT", "REVIEWER", "CONSULTED"]
+RETURN People.role, Process.workflow, Process.description, type(r)
+ORDER BY People.role
+```
+
+![]()
+
+## Integrating Processes Across Departments
 
 * What steps are required for a new hire to complete on-boarding (spanning across departments)?
 
