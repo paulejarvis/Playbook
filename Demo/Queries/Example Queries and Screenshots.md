@@ -2,7 +2,11 @@ tech requirements per roles - this informs separation of duties & IT controls
 
 what are the process requirements per role?
 
-are my internal policies being applied at the key moments
+
+
+
+
+
 
 ## Compliance
 
@@ -37,7 +41,7 @@ WHERE
 RETURN People.role, Process.workflow, Process.description, Process.policy, type(r)
 ```
 
-![]()
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Internal%20policy%20owners.PNG)
 
 ## IT Planning
 
