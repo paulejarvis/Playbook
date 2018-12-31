@@ -1,18 +1,8 @@
-
-
-**** sox - is there a secondary reviewer on payroll
-is the position posted on the external website before an offer is made
-internal policies
- * is a background check performed prior to offer being sent
-
-
-
-
 # Overview
 
 The following examples are drawn from the [Demo of Playbook](https://github.com/paulejarvis/Playbook/tree/master/Demo) and demonstrate how customers could derive value from querying the integrated process data to better understand the dataset or check that the processes fulfill compliance requirements ("Unit Tests"). These are just examples - please see the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) and [Neo4j Cheatsheet](https://neo4j.com/docs/cypher-refcard/current/) for more details on the data structure and Cypher query language.
 
-## Compliance
+## Compliance Queries
 
 * Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow
 
@@ -72,7 +62,7 @@ RETURN People.role ,Process.department, Process.workflow, type(r), Technology.ap
 ORDER BY People.role
 ```
 
-![]
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Tech%20permissions%20by%20role.PNG)
 
 ## Operational Efficiency
 
