@@ -1,0 +1,21 @@
+//make wireframes of these
+
+initial questionnaire
+module marketplace
+
+import
+  * manual entry GUI
+  * structure import of visio / excel / other
+  * starting from template
+
+analysis
+  * Queries
+  * unit tests
+explore - top=down histogram of available data and pu teverything on a graph
+
+Review - w/auditors
+
+export
+  * Within Playbook's "Review" interface
+  * Export to flowchart such as Visio or Graphviz
+  * Artifacts such as a risk register
