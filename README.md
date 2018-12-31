@@ -1,8 +1,29 @@
+How to use Playbook
+
+Pricing
+* pay by module (and differnet modules cost differnet amounts) - collecting compliance rent (marketplace for compliance)
+  * the value-add of playbook is turning compliance into unit tests / queries 
+* free to explore the data you already have in playbook
+
+
+
+
+
+
 # Playbook
 
 ## What is Playbook?
 
 Playbook is the operational knowledge base for the modern enterprise.
+
+
+
+
+
+
+
+
+
 
 ## How does Playbook work?
 
