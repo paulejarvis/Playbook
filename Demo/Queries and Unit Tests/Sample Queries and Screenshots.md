@@ -12,7 +12,8 @@ WHERE Process.policy IS NOT NULL
 RETURN People.role, Process.workflow, Process.description, Process.policy, Process.time
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/All_regulated_processes.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/All_regulated_processes.PNG)
+
 * How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
 
 ```Cypher
@@ -21,7 +22,8 @@ WHERE Process.policy = "Sarbanes-Oxley"
 RETURN People.role,Process.workflow, Process.description, Process.policy, Process.time
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/SOX_Query.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/SOX_Query.PNG)
+
 * Who is accountable or responsible for enforcing internal policies? NOTE: the differences between "Accountable" and "Responsible" are covered in the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md)
 
 ```Cypher
@@ -33,7 +35,8 @@ WHERE
 RETURN People.role, Process.workflow, Process.description, Process.policy, type(r)
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Internal%20policy%20owners.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Internal%20policy%20owners.PNG)
+
 ## IT Planning
 
 * Which technology systems are being used across the business? Break it out by department and workflow - this contextualizes IT investments across the org and helps to justify the value of these investments as well as provide information on what might happen if a system was taken down or replaced
@@ -44,7 +47,8 @@ WHERE Technology.application is not null
 Return Technology.application, Process.department, collect(Distinct Process.workflow)
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Tech%20systems%20by%20department%20and%20workflow.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Tech%20systems%20by%20department%20and%20workflow.PNG)
+
 * What permissions / roles does each person need to accomplish their job? This view enables administrators to properly limit permissions and systems access and complete separation of duties audits
 
 ```Cypher
@@ -58,7 +62,8 @@ RETURN People.role ,Process.department, Process.workflow, type(r), Technology.ap
 ORDER BY People.role
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Tech%20permissions%20by%20role.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Tech%20permissions%20by%20role.PNG)
+
 ## Operational Efficiency
 
 * How much time does it take to move an engineering candidate all the way through the interview process? How much time is required from each role? Where can we make the process more efficient?
@@ -69,7 +74,8 @@ WHERE Process.workflow = "Engineering interviews" AND People.role IS NOT NULL
 RETURN People.role, collect(Process.time)
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
+
 * What process steps are owned by each role? If someone currently in that role leaves or needs to be backfilled, what does the replacement need to be capable of doing? This can also serve as the blueprint for training new hires in their roles
 
 ```Cypher
@@ -81,7 +87,8 @@ RETURN People.role, Process.workflow, Process.description, type(r)
 ORDER BY People.role
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/Responsibilities%20by%20role.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Responsibilities%20by%20role.PNG)
+
 ## Integrating Processes Across Departments
 
 * What steps are required for a new hire to complete on-boarding (spanning across departments)? Are we preparing new hires adequately and front-loading any administrative tasks?
@@ -94,5 +101,5 @@ WHERE Process.workflow IN
 RETURN Process
 ```
 
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments.PNG)
-![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries/Screenshots/New%20hire%20processes%20across%20departments%20(1).PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/New%20hire%20processes%20across%20departments.PNG)
+![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/New%20hire%20processes%20across%20departments%20(1).PNG)
