@@ -1,11 +1,30 @@
-How to use Playbook
-
 Pricing
 * pay by module (and differnet modules cost differnet amounts) - collecting compliance rent (marketplace for compliance)
-  * the value-add of playbook is turning compliance into unit tests / queries 
+  * the value-add of playbook is turning compliance into unit tests / queries
 * free to explore the data you already have in playbook
 
 
+1 - complete the set-up questionaire to determine your compliance needs
+2 - bootstrap / import current operations
+3 - Run queries and tests to understand compliance
+4 - Export artifacts for internal review and verification w/auditors  
+
+How to bootstrap
+
+Who does it?
+* internal peeps do it (PMO)
+* external consultants
+
+How do they do it?
+* templates available that we have reviewed and believe are compliant
+* import from visio / excel / other
+* manual entry via a GUI
+* import org chart / people from AD
+
+continue building out new modules in partnership with Big4 / SMEs
+* playbook brings the data model and software platform
+
+disclaimer that playbook cannot make you compliant
 
 
 
@@ -14,7 +33,11 @@ Pricing
 
 ## What is Playbook?
 
-Playbook is the operational knowledge base for the modern enterprise.
+Playbook is a marketplace for expert guidance and pre-built operations templates and controls covering major compliance / regulatory frameworks.
+
+## What is the Playbook Ontology?
+
+Playbook models the people, processes, and technologies, powering the organization as objects in a graph database. Objects have properties and are connected to each other via relationships (which also have properties describing the relationship). The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
 
 
 
@@ -25,11 +48,14 @@ Playbook is the operational knowledge base for the modern enterprise.
 
 
 
-## How does Playbook work?
 
-Playbook models the people, processes, and technology comprising the enterprise as data
-and captures this in a graph database, allowing analysis of the people, processes, technologies,
-and the relationships between them.
+What is included in each module? - link to regulatory framework
+* full text
+* expert guidance and alaysis (FAQ)
+* controls / unit tests / queries to understnad if you're compliant
+* templates for processes if an org needs to build this out
+
+link to sample queries as an example of the value
 
 ## What can an organization accomplish with Playbook?
 
@@ -46,7 +72,7 @@ may include:
 * Export the code to flowcharts to share with regulators, employees, and others interested in the
 process design
 
-## What else is included in Playbook?
 
-* The text of major [regulatory frameworks](https://github.com/paulejarvis/Playbook/tree/master/Regulatory%20Frameworks) is stored along with guidance, unit tests, and
-templates for designing compliant processes
+
+
+[regulatory frameworks](https://github.com/paulejarvis/Playbook/tree/master/Regulatory%20Frameworks)

@@ -1,8 +1,9 @@
 # Questionnaire to determine what type of organization it is and suggest what modules are applicable
 
-
 print("Welcome to Playbook. We're going to ask some questions to understand\
- your business and your compliance needs")
+ your organization. At the end of this questionnaire, Playbook will suggest\
+ compliance modules that may be applicable; you can also adjust the selection\
+ directly from the marketplace")
 
 # gathering data on organization and assigning it to variables
 
@@ -15,8 +16,6 @@ inc_date = "" ''
 
 Local >> State >> Federal >> International
 Tax
-
-
 
 
 Incorporation Date
