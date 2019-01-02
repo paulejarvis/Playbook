@@ -2,9 +2,9 @@
 
 ## What is Playbook?
 
-Playbook is a compliance marketplace providing expert guidance and pre-built operations templates, controls, and queries across major compliance / regulatory frameworks and requirements.
+Playbook is the new standard for process documentation, providing a shared interface and universal data model for organizations and professional services firms (such as lawyers, auditors, and advisors) to review current processes and operations, iteratively update processes with nuanced version-control, and access expert guidance, pre-built process templates, and queries and tests designed to surface risk and controls gaps.
 
-Playbook partners with subject-matter experts such as accountants, lawyers, and regulatory bodies to develop modules for each regulatory framework. Playbook brings the data model and software platform to enable a data-driven approach to compliance; reducing risk, cost, and time required.  
+Playbook partners with subject-matter experts to develop content across major regulatory and compliance frameworks. Playbook's data model and software platform enable a data-driven approach to compliance; reducing risk, cost, and time required.  
 
 ## How does Playbook work?
 
@@ -27,7 +27,7 @@ Playbook modules include expert guidance and pre-built tools (operations templat
 * *Controls* in Playbook are modeled on unit tests from software development methodology and return a TRUE / FALSE as to whether the current operational design satisfies the compliance requirement. An example might be confirming that there is a secondary review step performed by a manager whenever a new entry is created in the payroll system.
 * *Queries* provide views of the data and are designed to surface risk or areas for further attention. An example might be showing all internal policies (such as non-discrimination or appropriate use of IT systems) and when these policies are being enforced within workflows.
 
-### Addressing control gaps and reviewing & exporting results 
+### Addressing control gaps and reviewing & exporting results
 
 Once an organization has used the tools and guidance in the modules to surface any control gaps or risks, they are ready to remediate the risks or share evidence with regulators or internal governing bodies (such as the Board of Directors or other leadership).
 
