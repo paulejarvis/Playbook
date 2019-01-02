@@ -36,7 +36,6 @@ Properties describe objects. Some properties are shared across object types whil
   * Phone Number
   * Start Date
   * Employee ID (Primary Key)
-  * Contextualized (Y/N; see [Contextualization](/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
 * Process
   * Description (Label)
   * Process Stage
@@ -58,7 +57,6 @@ Properties describe objects. Some properties are shared across object types whil
   * Implementation Date
   * Authentication
   * Hosting
-  * Contextualized (Y/N; see [Contextualization](/Data%20Structure%2C%20Ontology%2C%20Unit%20Tests/Contextualization.md))
 
 ### Relationships
 
