@@ -35,11 +35,37 @@ Headquarters
 
 Entity Name
 * DBA - "doing business as"
-Federal Tax ID
+Federal Tax ID / Employer Identification Number (EIN)
+State Tax ID
 Tax Exempt entity?
 Registered agent
 
 Named directors
+Name
+Relationship (independent / dependent)
+Tenure (and check against any tenure limit)
+Gender
+
+Special entities (for federal contracting)
+* Women-owned small business federal contracting ## https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contracting-program
+* Service-disabled Veteran-Owned small business program ##  https://www.sba.gov/federal-contracting/contracting-assistance-programs/service-disabled-veteran-owned-small-businesses-program
+* Native Americans
+* 8(a) Business development program  ## https://www.sba.gov/federal-contracting/contracting-assistance-programs/all-small-mentor-protege-program
+* located in a HUBZone? ## https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program
+
+Industries requiring federal licensing ## https://www.sba.gov/business-guide/launch-your-business/apply-licenses-permits
+
+* Agriculture
+* Alcoholic Beverages
+* Aviation
+* Firearms, ammunition and explosives
+* Fish and wildlife
+* Commercial fisheries
+* Maritime transportation
+* Mining and drilling
+* Nuclear energy
+* Radio and television broadcasting
+* Transportation and logistics 
 
 
 ## https://www.sba.gov/business-guide/launch-your-business/choose-business-structure
