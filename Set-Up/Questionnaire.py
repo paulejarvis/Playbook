@@ -25,8 +25,22 @@ Business Structure
     Partnership (taxes paid through personal income tax return of owners);
     Corporation (taxes paid by corporation);
     S corporation (taxes paid through personal income tax returns, but owners must be paid "reasonable compensation");
+    B corporation
+    Close corporation
     Limited Liability Company (LLC) (hybrid legal structure, taxes paid like a partnership, but receive personal liability shield);
     Non-profit (may be tax exempt).
+    Cooperative
 
-Business structure pt 2
-- subsidiaries / branches
+Headquarters
+
+Entity Name
+* DBA - "doing business as"
+Federal Tax ID
+Tax Exempt entity?
+Registered agent
+
+Named directors
+
+
+## https://www.sba.gov/business-guide/launch-your-business/choose-business-structure
+## https://www.sba.gov/business-guide/launch-your-business/register-your-business
