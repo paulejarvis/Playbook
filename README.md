@@ -10,15 +10,21 @@ Businesses are getting more complex, competition is increasing, and the global r
 
 ## Why hasn't this been solved before?
 
-Existing tools are designed to create flowcharts and visual representations of processes - this is an oversimplification of the complexity of modern regulated processes. Process documentation, if it exists, is distributed across the organization and stored in various formats and locations (flowcharts, checklists, wikis, SharePoint, etc). The lack of a universal format or interface results in disconnected and siloed process documentation that does not capture how workstreams are interdependent and interconnected and overlooks the reality that outputs from one process may form the inputs to a second process or how resources may be shared across processes. This one-dimensional approach produces documentation that does not accurately capture current state (and is itself burdensome to produce) and does not help the organization achieve its goals of operating safely and legally, reducing cost and friction, and optimizing resource usage.
+Existing tools (such as Visio, Lucidchart, and draw.io) are designed to create flowcharts and visual representations of processes - this is an oversimplification of the complexity of modern regulated processes and does not capture the full business context.
+
+Given that current tools are ineffective and there is no universal standard, process documentation is burdensome to produce and often distributed across the organization and stored in various formats and locations (flowcharts, checklists, wikis, SharePoint, etc).
+
+The current approach to process documentation is one-dimensional and does not capture how workstreams are interdependent and interconnected. Outputs from one process may form the inputs to a second process and resources are often shared across processes, yet process documentation treats each process as a siloed and independent operation.
+
+As a result, process documentation is often viewed as a burden and inaccurate, and does not help the organization achieve its goals of operating safely and legally, reducing cost and friction, and optimizing resource usage.
 
 ## What is Playbook?
 
-Playbook is a platform for integrated business processes. Playbook *treats process like data* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
+Playbook is a software platform for modeling and analyzing business processes. Playbook *treats process like data* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
 
 ## Why is this valuable?
 
-Playbook enables organizations and their external partners to share a single, reliable view of how the organization operates. Organizations can then: 
+Playbook enables organizations and their external partners to share a single, reliable view of how the organization operates. Organizations can then:
 
 * Analyze operations across the entire organization, powering informed decisions on where to invest in resources and technology (i.e. cutting an IT system that is only used in one workflow or shifting hiring to an understaffed team)
 * Adopt a platform and shared standard for reviewing operations with advisory firms and auditors, reducing the time and cost of achieving compliance
@@ -28,7 +34,7 @@ Playbook enables organizations and their external partners to share a single, re
 
 ## Who are the customers?
 
-Playbook seeks to partner with major advisory and audit firms to implement Playbook's data model and interface as the standard in their client engagements. Clients would also have access to pre-built process templates (to implement new processes), queries (to understand current processes), and tests (to surface control gaps and risks).
+Playbook seeks to partner with major advisory and audit firms to implement Playbook's data model and interface as the standard in their client engagements.
 
 #### Disclaimer
 
