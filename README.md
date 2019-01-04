@@ -30,6 +30,6 @@ Playbook establishes a new standard and interface for organizations and their ex
 
 Playbook seeks to partner with major advisory and audit firms to implement Playbook's data model and interface as the standard in their client engagements. Clients would also have access to pre-built process templates (to implement new processes), queries (to understand current processes), and tests (to surface control gaps and risks).
 
-### Disclaimer
+#### Disclaimer
 
 While Playbook is developed in partnership with subject-matter experts, Playbook cannot guarantee that an organization will pass an audit or other review - that determination can only be made by the appropriate governing body.
