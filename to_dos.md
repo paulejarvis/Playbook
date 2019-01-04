@@ -1,7 +1,6 @@
 ### TO-DO
 
-* make read-me less verbose
-* business plan 
+* business plan
 * unit tests
 * build wireframes for views & interfaces (figma)
 * review wireframes w/jackson & adam
