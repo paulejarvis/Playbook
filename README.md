@@ -1,8 +1,42 @@
 # Playbook
 
+## What is the problem?
+
+
+
+## Why is this important now?
+
+## Why hasn't this been solved before?
+
 ## What is Playbook?
 
-Playbook is the new standard for process documentation, providing a shared interface and universal data model for organizations and professional services firms (such as lawyers, auditors, and advisors) to review current processes and operations, iteratively update processes with nuanced version-control, and access expert guidance, pre-built process templates, and queries and tests designed to surface risk and controls gaps.
+
+
+
+Playbook is a hub for policy and process management.
+
+Business process repository
+
+integrated process repository
+* playbook data model / ontology is the new standard for process documentation; allowing organizations to analyze, review, test, share, assess risk, etc in a comprehensive and live way
+* the integrated repo is a single interface for engaging advisory services, simplifying what a business needs to do to understand it's compliance footprint
+* platform to connect professional services and customers  
+* iteratively update processes with nuanced version-control
+
+new standard for process documentation
+
+single interface for review
+
+marketplace connecting professional services and customers
+
+
+the new standard for process documentation. Playbook provides a single, integrated, interface for organizations to review current processes and operations, receive guidance from external advisory partners,
+
+
+
+
+
+ , access expert guidance, pre-built process templates, and queries and tests designed to surface risk and controls gaps
 
 Playbook partners with subject-matter experts to develop content across major regulatory and compliance frameworks. Playbook's data model and software platform enable a data-driven approach to compliance; reducing risk, cost, and time required.  
 
@@ -58,11 +92,6 @@ We have developed a demo instance that demonstrates the value of Playbook's data
 * Laptop set-up
 
 The [sample queries and results](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Sample%20Queries%20and%20Screenshots.md) evidence how Playbook enables organizations to understand and manage their compliance needs and overall operations.
-
-You can connect to the Playbook demo instance using these details:
-* URL:
-* Username:
-* Password:
 
 ### Disclaimer
 
