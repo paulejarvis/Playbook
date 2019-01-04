@@ -14,7 +14,7 @@ Existing tools are designed to create flowcharts and visual representations of p
 
 ## What is Playbook?
 
-Playbook is a platform for integrated business processes. Playbook *treats process like code* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
+Playbook is a platform for integrated business processes. Playbook *treats process like data* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
 
 ## Why is this valuable?
 
