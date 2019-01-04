@@ -18,7 +18,7 @@ Playbook is a platform for integrated business processes. Playbook *treats proce
 
 ## Why is this valuable?
 
-Playbook establishes a new standard and interface for organizations and their external partners to share a single, reliable view of how the organization operates. This is enables organizations to:
+Playbook enables organizations and their external partners to share a single, reliable view of how the organization operates. Organizations can then: 
 
 * Analyze operations across the entire organization, powering informed decisions on where to invest in resources and technology (i.e. cutting an IT system that is only used in one workflow or shifting hiring to an understaffed team)
 * Adopt a platform and shared standard for reviewing operations with advisory firms and auditors, reducing the time and cost of achieving compliance
