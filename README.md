@@ -2,43 +2,35 @@
 
 ## What is the problem?
 
-
+Organizations lack a single source of truth for business processes. Executives, managers, and end users within the organization, as well as auditors, advisors, consultants, and others outside of the organization, do not have a shared view of how the organization operates.
 
 ## Why is this important now?
 
+Businesses are getting more complex, competition is increasing and margins are decreasing, and the global regulatory landscape is becoming more complicated. Organizations that aspire to be competitive require a unified operating manual, or Playbook, to ensure that the they are operating as effectively as safely possible, optimally using resources, keeping overhead and cost to a minimum, complying with applicable laws and regulations, and reducing unnecessary friction and delays.
+
 ## Why hasn't this been solved before?
+
+Existing tools focus on visualization - this is an oversimplification of the complexity of modern regulated processes and does not scale. Process documentation, if it exists, is distributed across the organization and stored in various formats (flowcharts, checklists, wikis, etc). The lack of a universal format or interface results in disconnected and siloed process documentation that does not capture how workstreams are interdependent and interconnected and overlooks the reality that outputs from one process may for the inputs to a second process or how resources may be shared across processes. This one-dimensional approach produces documentation that does not accurately capture current state (and is burdensome to produce) and does not help the organization achieve its goals of operating safely and legally, reducing cost and friction, and optimizing resource usage.
 
 ## What is Playbook?
 
+Playbook is a platform for integrated business processes. Playbook *treats process like code* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
 
+## Why is this valuable?
 
+Playbook establishes a new standard and interface for organizations and their external partners to share a single, reliable view of how the organization operates. This is valuable for:
 
-Playbook is a hub for policy and process management.
+* Analyzing operations across and identifying friction, powering informed decisions on where to invest in resources and technology (i.e. cutting an IT system that is only used in one workflow or shifting hiring to an understaffed team)
+* Establishing a platform and shared standard for organizations to review their operations with advisory firms and auditors, reducing the time and cost of understanding their compliance needs and risks
+* Updating processes with nuanced version control, eliminating the need for time-consuming and disruptive re-orgs
+* Empowering every employee to keep documentation up-to-date and actionable
+* Optimizing employee productivity as job requirements and workflow steps are clearly documented for all roles
 
-Business process repository
+## Who are the customers?
 
-integrated process repository
-* playbook data model / ontology is the new standard for process documentation; allowing organizations to analyze, review, test, share, assess risk, etc in a comprehensive and live way
-* the integrated repo is a single interface for engaging advisory services, simplifying what a business needs to do to understand it's compliance footprint
-* platform to connect professional services and customers  
-* iteratively update processes with nuanced version-control
+Playbook seeks to partner with major advisory and audit firms to implement Playbook's data model and interface as the standard in their client engagements. Clients would also have access to pre-built process templates (to implement new processes), queries (to understand current processes), and tests (to surface control gaps and risks).
 
-new standard for process documentation
-
-single interface for review
-
-marketplace connecting professional services and customers
-
-
-the new standard for process documentation. Playbook provides a single, integrated, interface for organizations to review current processes and operations, receive guidance from external advisory partners,
-
-
-
-
-
- , access expert guidance, pre-built process templates, and queries and tests designed to surface risk and controls gaps
-
-Playbook partners with subject-matter experts to develop content across major regulatory and compliance frameworks. Playbook's data model and software platform enable a data-driven approach to compliance; reducing risk, cost, and time required.  
+#~~~~Under Development~~~~#
 
 ## How does Playbook work?
 
@@ -71,10 +63,6 @@ There are several mechanisms to review operations:
 * Within Playbook's "Review" interface
 * Export to flowchart such as Visio or Graphviz
 * Artifacts such as a risk register
-
-### What is the Playbook data model?
-
-Playbook models the people, processes, and technologies, powering the organization as objects in a graph database. Objects have properties and are connected to each other via relationships (which also have properties describing the relationship). The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
 
 ## Playbook pricing
 
