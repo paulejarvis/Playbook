@@ -20,7 +20,7 @@ As a result, process documentation is often viewed as a burden and inaccurate, a
 
 Playbook is a software platform for capturing and analyzing business processes that is built on a new standard for modeling processes, the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md). The Playbook Ontology breaks down processes into discrete components defined as People, Process, and Technology (with relationships between these objects).
 
-The Playbook platform leverages this standard data model to allow organizations to capture and analyze all business processes through a single interface. 
+The Playbook platform leverages this standard data model to allow organizations to capture, analyze, and review all business processes through a single interface.
 
 ## Why is this valuable?
 
@@ -28,6 +28,7 @@ Playbook enables organizations and their external partners to share a single, re
 
 * Analyze operations across the entire organization, powering informed decisions on where to invest in resources and technology (i.e. cutting an IT system that is only used in one workflow or shifting hiring to an understaffed team)
 * Adopt a platform and shared standard for reviewing operations with advisory firms and auditors, reducing the time and cost of achieving compliance
+* Report on risks and controls gaps across the organization, ensuring that the Board is provided with accurate and timely information 
 * Update processes iteratively with nuanced version control, eliminating the need for time-consuming and disruptive re-orgs
 * Empower every employee to keep documentation up-to-date and actionable
 * Optimize employee productivity as job requirements and workflow steps are clearly documented for all roles
