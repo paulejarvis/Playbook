@@ -10,17 +10,17 @@ Businesses are getting more complex, competition is increasing, and the global r
 
 ## Why hasn't this been solved before?
 
-Existing tools (such as Visio, Lucidchart, and draw.io) are designed to create flowcharts and visual representations of processes - this is an oversimplification of the complexity of modern regulated processes and does not capture the full business context.
-
-Given that current tools are ineffective and there is no universal standard, process documentation is burdensome to produce and often distributed across the organization and stored in various formats and locations (flowcharts, checklists, wikis, SharePoint, etc).
-
 The current approach to process documentation is one-dimensional and does not capture how workstreams are interdependent and interconnected. Outputs from one process may form the inputs to a second process and resources are often shared across processes, yet process documentation treats each process as a siloed and independent operation.
+
+Existing tools (such as Visio, Lucidchart, and draw.io) are designed to create flowcharts and visual representations of processes - this is an oversimplification of the complexity of modern regulated processes and does not capture the full business context.
 
 As a result, process documentation is often viewed as a burden and inaccurate, and does not help the organization achieve its goals of operating safely and legally, reducing cost and friction, and optimizing resource usage.
 
 ## What is Playbook?
 
-Playbook is a software platform for modeling and analyzing business processes. Playbook *treats process like data* and uses a data model that represents business processes as People, Process, and Technology objects with relationships between these objects. The [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md) describes the data model in further detail.
+Playbook is a software platform for capturing and analyzing business processes that is built on a new standard for modeling processes, the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md). The Playbook Ontology breaks down processes into discrete components defined as People, Process, and Technology (with relationships between these objects).
+
+The Playbook platform leverages this standard data model to allow organizations to capture and analyze all business processes through a single interface. 
 
 ## Why is this valuable?
 
