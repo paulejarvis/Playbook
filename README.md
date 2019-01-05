@@ -2,7 +2,7 @@
 
 ## What is the problem?
 
-Organizations lack a single source of truth for business processes. Executives, managers, and end users within the organization, as well as auditors, advisors, consultants, and others outside of the organization, do not have a shared view of how the organization operates.
+There is no recognized standard for documenting business processes. As a result, business processes are documented inconsistently (if documented at all) and executives, managers, and end users within the organization, as well as auditors, advisors, consultants, and others outside of the organization, do not have a shared view of how the organization operates. This results in increased risk, inefficiency, and cost.
 
 ## Why is this important now?
 
