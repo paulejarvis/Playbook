@@ -12,12 +12,12 @@ between Objects.
 
 ### Objects
 
-There are 3 object types: *People*, *Process*, and *Technology*.
+There are 3 base object types: *People*, *Process*, and *Technology*. A *Workflow* is the end-to-end process steps. As an example, "New hire payroll set-up" would be a workflow and "confirm employee's direct deposit details" would be a process step.
 
 * People are the individuals within your organization who perform a function related to process
 or technology. There are multiple possible roles that a people can play (see [Relationships](#relationships))
 * Process refers to the actions in a workflow
-* Technology encompasses the systems and tools used to execute the workflow. This
+* Technology encompasses the systems and tools used to execute the process. This
 definition extends to non-technical systems such as meetings or phone calls
 
 ### Properties
@@ -47,6 +47,9 @@ Properties describe objects. Some properties are shared across object types whil
   * Stage
   * Control_Framework (Sarbanes-Oxley, Revenue 606, GDPR, etc.)
   * Time Required (Actions)
+  * Recurring (Y/N)
+  * Frequency
+  * Start Date
   * Notes
 * Technology
   * Application (Label)
