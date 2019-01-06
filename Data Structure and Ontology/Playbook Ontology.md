@@ -1,7 +1,7 @@
 # Playbook Ontology
 
 The Playbook Ontology is a framework to describe business processes and operations.
-It draws from industry-standard conventions and best practices within the fields of Human Resources, Project Management /Operations, and Information Technology, while remaining flexible to accommodate user-defined variance.
+It draws from industry-standard conventions and best practices within the fields of Human Resources, Project Management / Operations, and Information Technology, while remaining flexible to accommodate user-defined variance.
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Schema.PNG)
 
