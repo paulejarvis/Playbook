@@ -5,7 +5,7 @@ The following examples are drawn from the [Demo of Playbook](https://github.com/
 ## Compliance Queries
 
 
-* **Scenario** The Chief Compliance officer (CCO) wants to know who is accountable for specific policies across the org.
+* **Scenario** The Chief Compliance officer (CCO) wants to know who is accountable for compliance with all policies (internal and external) across the organization
 * **Query** Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow. This query will ensure clear ownership and accountability for achieving compliance
 
 ```Cypher
@@ -16,7 +16,8 @@ RETURN People.role, Process.workflow, Process.description, Process.policy, Proce
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/All_regulated_processes.PNG)
 
-* How much time is being spent on SOX compliance? Who's time is it? This might inform a decision to hire a consultant to streamline the processes
+* **Scenario** The CFO wants to know how much time is being spent on SOX compliance across the company so that he / she can decide whther to hire a consultant to help streamline these processes
+* **Query** Return all processes labeled as SOX
 
 ```Cypher
 MATCH (People)-[:RESPONSIBLE]->(Process)
@@ -26,7 +27,8 @@ RETURN People.role,Process.workflow, Process.description, Process.policy, Proces
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/SOX_Query.PNG)
 
-* Who is accountable or responsible for enforcing internal policies? NOTE: the differences between "Accountable" and "Responsible" are covered in the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md)
+* **Scenario** The CCO wants to know who is accountable and responsible for enforcing policies internal to the company and which workflows these policies apply to. NOTE: the differences between "Accountable" and "Responsible" are covered in the [Playbook Ontology](https://github.com/paulejarvis/Playbook/blob/master/Data%20Structure%20and%20Ontology/Playbook%20Ontology.md)
+* **Query** Search the relationships between people and processes, filter to just processes that are governed by internal policies, and return the people connected as Responsible or Accountable
 
 ```Cypher
 MATCH
@@ -41,7 +43,8 @@ RETURN People.role, Process.workflow, Process.description, Process.policy, type(
 
 ## IT Planning
 
-* Which technology systems are being used across the business? Break it out by department and workflow - this contextualizes IT investments across the org and helps to justify the value of these investments as well as provide information on what might happen if a system was taken down or replaced
+* **Scenario** The CIO wants to understand the current use of systems across the organization (broken out by department and workflow) to contextualize IT investment and understand the return on investment and what might happen if a system is replaced
+* **Query** Search for technologies linked to processes and return the department, application name, and workflows
 
 ```Cypher
 MATCH (Process)-[r]->(Technology)
@@ -51,15 +54,16 @@ Return Technology.application, Process.department, collect(Distinct Process.work
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Tech%20systems%20by%20department%20and%20workflow.PNG)
 
-* What permissions / roles does each person need to accomplish their job? This view enables administrators to properly limit permissions and systems access and complete separation of duties audits
+* **Scenario** A systems administrator needs to understand what level of access each user requires to do their job so that permissions are limited appropriately. This report can also be used to verify appropriate separation of duties in an audit
+* **Query** Query the path from process to technology and from people to process to understand the actions that each user needs to take in each system
 
 ```Cypher
 MATCH
 	(Process)-[r]->(Technology),
-    (People)-[s]->(Process)
+  (People)-[s]->(Process)
 WHERE
 	type(r) in ["CREATE", "DELETE", "UPLOAD"] AND
-    People.role is not null
+  People.role is not null
 RETURN People.role ,Process.department, Process.workflow, type(r), Technology.application
 ORDER BY People.role
 ```
@@ -68,7 +72,8 @@ ORDER BY People.role
 
 ## Operational Efficiency
 
-* How much time does it take to move an engineering candidate all the way through the interview process? How much time is required from each role? Where can we make the process more efficient?
+* **Scenario** The Director of Engineering is worried that the team is not hiring candidates fast enough (and that it's taking too much of the interviewer's time) and wants to understand the time requirements of hiring a single candidate
+* **Query** Search the workflow "Engineering interviews" and return time per process along with the owner of that process
 
 ```Cypher
 MATCH (People)-[r]->(Process)
@@ -78,7 +83,8 @@ RETURN People.role, collect(Process.time)
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Time%20by%20role%20for%20Engineering%20Interviews.PNG)
 
-* What process steps are owned by each role? If someone currently in that role leaves or needs to be backfilled, what does the replacement need to be capable of doing? This can also serve as the blueprint for training new hires in their roles
+* **Scenario** A manager wants to understand what might happen if someone on their team leaves - what actions are they currently owning and what would need to be backfilled? What would the replacement resource need to know how to do? This report could also serve as the blueprint for training new hires in their role
+* **Query** Search across all workflows and categorize each People --> Process relationship by the type of relationship (Accountable, Responsible, Participant, Reviewer, or Consulted) and group by role
 
 ```Cypher
 MATCH
@@ -91,9 +97,10 @@ ORDER BY People.role
 
 ![](https://github.com/paulejarvis/Playbook/blob/master/Demo/Queries%20and%20Unit%20Tests/Screenshots/Responsibilities%20by%20role.PNG)
 
-## Integrating Processes Across Departments
+## Integrating Workflows Across Departments
 
-* What steps are required for a new hire to complete on-boarding (spanning across departments)? Are we preparing new hires adequately and front-loading any administrative tasks?
+* **Scenario** The Director of HR believes that the on-boarding process could be improved but knows that there are actions outside of HR (such as provisioning a laptop or setting up payroll) so wants to search the entire workflow to understand all steps across all departments
+* **Query** Query multiple workflows (across departments) and return the end-to-end integrated workflow
 
 ```Cypher
 MATCH (Process)
