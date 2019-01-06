@@ -4,7 +4,9 @@ The following examples are drawn from the [Demo of Playbook](https://github.com/
 
 ## Compliance Queries
 
-* Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow. This query will ensure clear ownership and accountability for achieving compliance
+
+* **Scenario** The Chief Compliance officer (CCO) wants to know who is accountable for specific policies across the org.
+* **Query** Return all processes that are regulated, how much time each step takes, and who owns the steps in the workflow. This query will ensure clear ownership and accountability for achieving compliance
 
 ```Cypher
 MATCH (People)-[:RESPONSIBLE]->(Process)
