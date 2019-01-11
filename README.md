@@ -28,7 +28,7 @@ Playbook enables organizations and their external partners to share a single, re
 
 * Analyze operations across the entire organization, powering informed decisions on where to invest in resources and technology (i.e. cutting an IT system that is only used in one workflow or shifting hiring to an understaffed team)
 * Adopt a platform and shared standard for reviewing operations with advisory firms and auditors, reducing the time and cost of achieving compliance
-* Report on risks and controls gaps across the organization, ensuring that the Board is provided with accurate and timely information 
+* Report on risks and controls gaps across the organization, ensuring that leadership is provided with accurate and timely information 
 * Update processes iteratively with nuanced version control, eliminating the need for time-consuming and disruptive re-orgs
 * Empower every employee to keep documentation up-to-date and actionable
 * Optimize employee productivity as job requirements and workflow steps are clearly documented for all roles
