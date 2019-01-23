@@ -86,6 +86,7 @@ Properties describe objects. Some properties are shared across object types whil
 * Process <-> Process
   * Then (default connector between "Action" process nodes; assumes that the previous action had completed successfully)
   * Decision Outputs (conditional; only one option can be true)
+  * Blocked on / Permits
 * Technology <-> Technology
   * Automated Connection (API or script)
   * Manual Connection
