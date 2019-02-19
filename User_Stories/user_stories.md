@@ -6,4 +6,6 @@ employees
 
 internal auditors
 
-CFO 
+CFO
+
+new hires
