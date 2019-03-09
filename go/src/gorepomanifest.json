@@ -1,0 +1,37 @@
+{
+ "github.com/fullstorydev/gorepoman": {
+  "git-remote": "https://github.com/fullstorydev/gorepoman",
+  "current-version-git-hash": "638ce770f4f5aed867c09a1e910976b967749719",
+  "content-hash": "f963542ba8de9784e2705e850c5202794e6724a4"
+ },
+ "github.com/golang/protobuf": {
+  "git-remote": "https://github.com/golang/protobuf",
+  "current-version-git-hash": "b5d812f8a3706043e23a9cd5babf2e5423744d30",
+  "content-hash": "3a5c81dd4976fe77f36e027f57207fc914b1b542"
+ },
+ "github.com/pkg/errors": {
+  "git-remote": "https://github.com/pkg/errors",
+  "current-version-git-hash": "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7",
+  "content-hash": "0fb61d3606dbfd79551e032577eace4c3fc025c1"
+ },
+ "golang.org/x/net": {
+  "git-remote": "https://go.googlesource.com/net",
+  "current-version-git-hash": "16b79f2e4e95ea23b2bf9903c9809ff7b013ce85",
+  "content-hash": "97d3968f62b622203f148d09607271baa8083a98"
+ },
+ "golang.org/x/text": {
+  "git-remote": "https://go.googlesource.com/text",
+  "current-version-git-hash": "5d731a35f4867878fc89f7744f7b6debb3beded6",
+  "content-hash": "319f0ec94ba8eda23ceca633723ce565903231d5"
+ },
+ "google.golang.org/genproto": {
+  "git-remote": "https://github.com/google/go-genproto",
+  "current-version-git-hash": "5fe7a883aa19554f42890211544aa549836af7b7",
+  "content-hash": "8af6ac81ee99ac3291b31827b299fb2aa666cc94"
+ },
+ "google.golang.org/grpc": {
+  "git-remote": "https://github.com/grpc/grpc-go",
+  "current-version-git-hash": "a1a84e16d09f20f76a940a7706b544967af44d2d",
+  "content-hash": "a2a3135f92c6688fad25d7ceee85c1f197723d8a"
+ }
+}
