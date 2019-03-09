@@ -175,14 +175,14 @@ service ProcStore {
     rpc RmvProcessFromWorkflow (AddProcessToWorkflowRequest) returns (Workflow);
 
     // Tool CRUD
-    rpc ListTools (ToDo) returns (ToDo)
+    rpc ListTools (ToDo) returns (ToDo);
     rpc GetTool (EntityId) returns (Tool);
     rpc CreateTool (Tool) returns (EntityId);
     rpc DeleteTool (EntityId) returns (Empty);
     rpc EditTool (Tool) returns (EntityId);
 
     // StateFragment CRUD
-    rpc ListStateFrags (ToDo) returns (ToDo)
+    rpc ListStateFrags (ToDo) returns (ToDo);
     rpc GetStateFrag (EntityId) returns (EntityState);
     rpc CreateStateFrag (EntityState) returns (EntityId);
     rpc DeleteStateFrag (EntityId) returns (Empty);
