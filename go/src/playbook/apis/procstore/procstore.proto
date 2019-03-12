@@ -1,199 +1,185 @@
 syntax = "proto3";
 
+// ProcStore models the concrete types satisfying our ontology of process and state
+// There is much care taken here to try and use the proto/go type system to ensure
+// that all process entered is "valid". There are some additional checks/constraints
+// on validity that cannot be expressed/ worth a complexity tradeoff, those located
+// in playbook/validator/
+// The translation layer (to and from proto) is located in playbook/dbtranslation
 package procstore;
 
-// Top Level process object.
-// All Processes are unique, but share
-// many underlying entities (steps etc)
-message Process {
-    string id = 1;
-    string name = 2;
-    string desc = 3;
-    string goal = 4;
-    Step FirstStep = 5;
-    // An entire process can have requirements, mostly regulatory/ compliance focused
-    // Aka "don't touch this if you're not a cpa"
-    repeated EntityState Reqs = 6;
+enum NodeKind {
+    NK_UNSET = 0;
+    NK_EXECUTOR = 1;
+    NK_OBJECT = 2;
+    NK_STEP = 3;
+    NK_PROCESS = 4;
+    NK_STATE = 5;
+    NK_WORKFLOW = 6;
+    NK_PERSON = 7;
 }
 
-// Workflows are a collection of processes
-// One process can be in >= 0 Workflows.
-message Workflow {
-    string id = 1;
-    string name = 2;
-    string desc = 3;
-    repeated Process procs = 4;
-}
-
-// Steps in reality are shared amongst many processes,
-// though returned here as if they are the child of a single process
-message Step {
-    string id = 1;
-    string name = 2;
-    string desc = 3;
-    repeated Tool tools = 4;
-    // Map keys signify the choice "yes", "no", "fuck-yeah!"
-    map<string,Step> children = 5;
-    repeated EntityState effects = 6;
-    // Not clear how to think about reqs vis-a-vis agents.
-    repeated EntityState reqs = 7;
-}
-
-// EntityState are a means of describing an abstract/ loose state
-// Can be expressed as either an Effect (it is made to be so) or
-// As a requirement (it must be so)
-// TODO(hdh) this requires more miles before it can really be completed.
-// There are lots of questions around how specific/general to model this.
-// Describing state abstractly/ dynamically presents challenges.
-// Current approach is to derive a simple "language" which will
-// allow discussing state, but will not express much else.
-message EntityState {
-    enum Verb {
-        IS = 0;
-        IS_NOT = 1;
-
-        HAS = 2;
-        DOES_NOT_HAVE = 3;
-
-        EXISTS = 4;
-        DOES_NOT_EXIST = 5;
-
-        // More to come....
+message Object {
+    enum ObjectType {
+        OT_UNSET = 0;
+        OT_THING = 1;
+        OT_TOOL = 2;
+        OT_QUALIFICATION = 4;
+        OT_EMPLOYEE = 5;
+        OT_MACHINE = 6;
     }
 
-    string id = 1;
+    // Subclasses of Object...
+    message Thing {
+        map<string, string> props = 1; // TODO(hdh) use proto.any
+    }
 
-    // Entity_Type is an unbounded set,
-    // but always includes at least person.
-    // It cannot be enumurative, because we don't
-    // know what sets of abstract entities
-    // there are in any given system
-    // Examples include: opportunity_record,
-    // weather, knee, form-1099 etc.
-    string entity_type = 2;
+    message Tool {
+        string login_page = 1;
+    }
 
-    // Bet is that verb is an enumerable set.
-    // Because we are only concerned with expressing the
-    // state of things, not expressing an arbitrary
-    // grammar.
-    Verb verb = 3;
+    message Qualification {
+        Object certified_by = 1;
+    }
 
-    // State_Name is a descriptor of what the state is.
-    // Varies widely based on context...Admin, Rainy, CPA
-    string state_name = 5;
+    message Employee {
+        string role_name = 1;
+        repeated Person can_be = 2;
+    }
 
-    // The state that this is contained in, can be a tool, person, or "the world"
-    // Unlike entity type above, it is not a "class" but rather a specific instance
-    // That the state has happened in.
-    string context_id = 6;
+    message Machine {
+        string program_name = 1;
+    }
+
+    // Inherited Properties
+    string uid =1;
+    NodeKind node_kind = 2;
+    ObjectType object_type = 3;
+    string hash_id = 4;
+
+    string name = 5;
+    string description = 6;
+
+    oneof instantiated_by {
+        Thing thing = 7;
+        Tool tool = 8;
+        Qualification qualification = 9;
+        Employee employee = 13;
+        Machine machine = 14;
+    }
+
+    // Relations...
+    // Objects can exist_in 0, or 1 other objects
+    Object exists_in = 10;
+
+    oneof state {
+        // Objects can be in exactly 0, or 1 states
+        Object is_in = 11;
+        Object is_not_in = 12;
+    }
+
+}
+// STATES ARE JUST ENVELOPES DONT STORE THEM
+
+
+message Step {
+    message StepChoices {
+        message StepChoice {
+            string choice = 1;
+            Step step = 2;
+        }
+        repeated StepChoice choice=1;
+    }
+
+    message Steps {
+        repeated Step steps = 1;
+    }
+
+    string uid =1;
+    NodeKind node_kind = 2;
+    string hash_id = 3;
+
+    Object executed_by = 4;
+    repeated State causes = 5;
+    repeated State requires = 6;
+
+    string name = 11;
+    string description = 12;
+
+
+    oneof preceded_by {
+        Steps preceding_steps = 7;
+        Step  preceding_step = 8;
+    }
+
+
+    oneof followed_by {
+        StepChoices following_steps = 9;
+        Step following_step = 10;
+    }
 }
 
-// Used to dynamically represent things users may wish to add in the system "the weather", "left hand" etc.
-// This is mostly an escape valve for when things just don't quite fit. Should be
-// used rarely. Tools, and People are modeled as abstract entities, but have thier own concrete types
-// One case, we will have by default is "The World". This is to model things
-// that are truly global, or functionally global in scope like, having a CPA
-message AbstractEntity {
-    string id = 1;
-    // Sometimes this will be synonymous with an instances name.
-    // i.e. there is only one "world". However, it
-    // is also possible for this to be a grouping
-    // of instances that share common states. For example
-    // Models of Lawnmower, or dog breeds
-    string type = 2;
-    string desc = 3;
+message Process {
+    string uid =1;
+    // An ID we assign that allows us to update a particular process.
+    string guid = 7;
+    NodeKind node_kind = 2;
+    string hash_id = 3;
+
+    string name = 4;
+    string description = 5;
+
+    // Relations
+    Step starts_with = 6;
 }
 
-message EntityInstance {
-    string id = 1;
-    string name = 2;
-    string type = 3;
-    string desc = 4;
+// State lacks many shared fields because it is actually stored as a simple relationship
+message State {
+    // Relations
+    Object subject = 6;
+
+    string predicate = 7;
+
+    oneof object {
+        string state_name = 8;
+        Object state_object = 9;
+    }
 }
 
-// Concrete Type of the abstract entity Tools
-message Tool {
-    string id = 1;
-    string name = 2;
-    string desc = 3;
-    // More to add here....
+
+// Workflow and Person are our weirdest types, they exist outside any individual processes graph
+// May want to move them into SQL?
+
+message Workflow {
+    string uid =1;
+    NodeKind node_kind = 2;
+    string hash_id = 3;
+
+    string name = 4;
+    string description = 5;
+
+    // Relations
+    repeated Process contains = 6;
 }
 
-// Concrete Type of the abstract entity People
+
+
 message Person {
-    string id = 1;
-    string name = 2;
-    string role = 3;
-    string department = 4;
-    // Add more...
+    string uid = 1;
+    NodeKind node_kind = 2;
+    string hash_id = 3;
+    string name = 5;
+
+    // This must resolve to be a qualification object
+    repeated Object has_qualification = 4;
 }
 
-// --> Request Types
 
-message AddProcessToWorkflowRequest {
-    string wkflow_id = 1;
-    repeated string proc_ids = 2;
+// TODO(henry): figure out dgraph type imports
+message Assigned {
+    map<string, string> uids = 1;
 }
-
-// All Nodes in the store can be addressed by an entity id,
-// So this is a generally reusable primitive
-message EntityId {
-    string id = 1;
-}
-
-// Anything with this message type is being punted for now
-message ToDo {
-    string todo = 1;
-}
-
-message Empty {
-    // TODO(hdh) import the real empty type
-    string todo = 1;
-}
-
 
 service ProcStore {
-    // Process CRUD
-    rpc ListProcess (ToDo) returns (ToDo);
-    rpc GetProcess (EntityId) returns (Process);
-    rpc CreateProcess (Process) returns (EntityId);
-    rpc DeleteProcess (EntityId) returns (Empty);
-    rpc DuplicateProcess (EntityId) returns (Process);
-
-    // Step CRUD
-    // Step could also be "node" or "stage"
-    rpc AddStep (Step) returns (EntityId);
-    rpc DeleteStep (Step) returns (Empty);
-    rpc EditStep (Step) returns (EntityId);
-    rpc DuplicateStep (EntityId) returns (Step);
-
-    // Workflow CRUD
-    rpc GetWorkflow (EntityId) returns (Workflow);
-    rpc CreateWorkflow (AddProcessToWorkflowRequest) returns (EntityId);
-    rpc DeleteWorkflow (EntityId) returns (Empty);
-    rpc AddProcessToWorkflow (AddProcessToWorkflowRequest) returns (Workflow);
-    rpc RmvProcessFromWorkflow (AddProcessToWorkflowRequest) returns (Workflow);
-
-    // Tool CRUD
-    rpc ListTools (ToDo) returns (ToDo);
-    rpc GetTool (EntityId) returns (Tool);
-    rpc CreateTool (Tool) returns (EntityId);
-    rpc DeleteTool (EntityId) returns (Empty);
-    rpc EditTool (Tool) returns (EntityId);
-
-    // StateFragment CRUD
-    rpc ListStateFrags (ToDo) returns (ToDo);
-    rpc GetStateFrag (EntityId) returns (EntityState);
-    rpc CreateStateFrag (EntityState) returns (EntityId);
-    rpc DeleteStateFrag (EntityId) returns (Empty);
-    rpc EditStateFrag (EntityState) returns (EntityId);
-    rpc DuplicateStateFrag (EntityState) returns (EntityId);
-
-    // Person CRUD
-    rpc ListPeople (ToDo) returns (ToDo);
-    rpc GetPerson (EntityId) returns (Person);
-    rpc CreatePerson (Person) returns (EntityId);
-    rpc DeletePerson (EntityId) returns (Empty);
-    rpc DuplicatePerson (EntityId) returns (Person);
-
+      rpc CreateProcess (Process) returns (Assigned) {}
 }
