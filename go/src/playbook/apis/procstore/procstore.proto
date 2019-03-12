@@ -1,0 +1,199 @@
+syntax = "proto3";
+
+package procstore;
+
+// Top Level process object.
+// All Processes are unique, but share
+// many underlying entities (steps etc)
+message Process {
+    string id = 1;
+    string name = 2;
+    string desc = 3;
+    string goal = 4;
+    Step FirstStep = 5;
+    // An entire process can have requirements, mostly regulatory/ compliance focused
+    // Aka "don't touch this if you're not a cpa"
+    repeated EntityState Reqs = 6;
+}
+
+// Workflows are a collection of processes
+// One process can be in >= 0 Workflows.
+message Workflow {
+    string id = 1;
+    string name = 2;
+    string desc = 3;
+    repeated Process procs = 4;
+}
+
+// Steps in reality are shared amongst many processes,
+// though returned here as if they are the child of a single process
+message Step {
+    string id = 1;
+    string name = 2;
+    string desc = 3;
+    repeated Tool tools = 4;
+    // Map keys signify the choice "yes", "no", "fuck-yeah!"
+    map<string,Step> children = 5;
+    repeated EntityState effects = 6;
+    // Not clear how to think about reqs vis-a-vis agents.
+    repeated EntityState reqs = 7;
+}
+
+// EntityState are a means of describing an abstract/ loose state
+// Can be expressed as either an Effect (it is made to be so) or
+// As a requirement (it must be so)
+// TODO(hdh) this requires more miles before it can really be completed.
+// There are lots of questions around how specific/general to model this.
+// Describing state abstractly/ dynamically presents challenges.
+// Current approach is to derive a simple "language" which will
+// allow discussing state, but will not express much else.
+message EntityState {
+    enum Verb {
+        IS = 0;
+        IS_NOT = 1;
+
+        HAS = 2;
+        DOES_NOT_HAVE = 3;
+
+        EXISTS = 4;
+        DOES_NOT_EXIST = 5;
+
+        // More to come....
+    }
+
+    string id = 1;
+
+    // Entity_Type is an unbounded set,
+    // but always includes at least person.
+    // It cannot be enumurative, because we don't
+    // know what sets of abstract entities
+    // there are in any given system
+    // Examples include: opportunity_record,
+    // weather, knee, form-1099 etc.
+    string entity_type = 2;
+
+    // Bet is that verb is an enumerable set.
+    // Because we are only concerned with expressing the
+    // state of things, not expressing an arbitrary
+    // grammar.
+    Verb verb = 3;
+
+    // State_Name is a descriptor of what the state is.
+    // Varies widely based on context...Admin, Rainy, CPA
+    string state_name = 5;
+
+    // The state that this is contained in, can be a tool, person, or "the world"
+    // Unlike entity type above, it is not a "class" but rather a specific instance
+    // That the state has happened in.
+    string context_id = 6;
+}
+
+// Used to dynamically represent things users may wish to add in the system "the weather", "left hand" etc.
+// This is mostly an escape valve for when things just don't quite fit. Should be
+// used rarely. Tools, and People are modeled as abstract entities, but have thier own concrete types
+// One case, we will have by default is "The World". This is to model things
+// that are truly global, or functionally global in scope like, having a CPA
+message AbstractEntity {
+    string id = 1;
+    // Sometimes this will be synonymous with an instances name.
+    // i.e. there is only one "world". However, it
+    // is also possible for this to be a grouping
+    // of instances that share common states. For example
+    // Models of Lawnmower, or dog breeds
+    string type = 2;
+    string desc = 3;
+}
+
+message EntityInstance {
+    string id = 1;
+    string name = 2;
+    string type = 3;
+    string desc = 4;
+}
+
+// Concrete Type of the abstract entity Tools
+message Tool {
+    string id = 1;
+    string name = 2;
+    string desc = 3;
+    // More to add here....
+}
+
+// Concrete Type of the abstract entity People
+message Person {
+    string id = 1;
+    string name = 2;
+    string role = 3;
+    string department = 4;
+    // Add more...
+}
+
+// --> Request Types
+
+message AddProcessToWorkflowRequest {
+    string wkflow_id = 1;
+    repeated string proc_ids = 2;
+}
+
+// All Nodes in the store can be addressed by an entity id,
+// So this is a generally reusable primitive
+message EntityId {
+    string id = 1;
+}
+
+// Anything with this message type is being punted for now
+message ToDo {
+    string todo = 1;
+}
+
+message Empty {
+    // TODO(hdh) import the real empty type
+    string todo = 1;
+}
+
+
+service ProcStore {
+    // Process CRUD
+    rpc ListProcess (ToDo) returns (ToDo);
+    rpc GetProcess (EntityId) returns (Process);
+    rpc CreateProcess (Process) returns (EntityId);
+    rpc DeleteProcess (EntityId) returns (Empty);
+    rpc DuplicateProcess (EntityId) returns (Process);
+
+    // Step CRUD
+    // Step could also be "node" or "stage"
+    rpc AddStep (Step) returns (EntityId);
+    rpc DeleteStep (Step) returns (Empty);
+    rpc EditStep (Step) returns (EntityId);
+    rpc DuplicateStep (EntityId) returns (Step);
+
+    // Workflow CRUD
+    rpc GetWorkflow (EntityId) returns (Workflow);
+    rpc CreateWorkflow (AddProcessToWorkflowRequest) returns (EntityId);
+    rpc DeleteWorkflow (EntityId) returns (Empty);
+    rpc AddProcessToWorkflow (AddProcessToWorkflowRequest) returns (Workflow);
+    rpc RmvProcessFromWorkflow (AddProcessToWorkflowRequest) returns (Workflow);
+
+    // Tool CRUD
+    rpc ListTools (ToDo) returns (ToDo);
+    rpc GetTool (EntityId) returns (Tool);
+    rpc CreateTool (Tool) returns (EntityId);
+    rpc DeleteTool (EntityId) returns (Empty);
+    rpc EditTool (Tool) returns (EntityId);
+
+    // StateFragment CRUD
+    rpc ListStateFrags (ToDo) returns (ToDo);
+    rpc GetStateFrag (EntityId) returns (EntityState);
+    rpc CreateStateFrag (EntityState) returns (EntityId);
+    rpc DeleteStateFrag (EntityId) returns (Empty);
+    rpc EditStateFrag (EntityState) returns (EntityId);
+    rpc DuplicateStateFrag (EntityState) returns (EntityId);
+
+    // Person CRUD
+    rpc ListPeople (ToDo) returns (ToDo);
+    rpc GetPerson (EntityId) returns (Person);
+    rpc CreatePerson (Person) returns (EntityId);
+    rpc DeletePerson (EntityId) returns (Empty);
+    rpc DuplicatePerson (EntityId) returns (Person);
+
+}
