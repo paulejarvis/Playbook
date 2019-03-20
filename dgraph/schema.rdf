@@ -1,0 +1,18 @@
+<StartsWith>: uid @reverse .
+<are>: uid .
+<causes>: uid @reverse .
+<description>: string @index(fulltext) .
+<dgraph.group.acl>: string .
+<dgraph.password>: password .
+<dgraph.user.group>: uid @reverse .
+<dgraph.xid>: string @index(exact) .
+<followingStep>: uid @reverse .
+<has>: uid .
+<hashId>: string @index(term) .
+<kind>: string @index(term) .
+<loginPage>: string .
+<name>: string @index(term) .
+<nodeKind>: string @index(term) .
+<objectType>: string @index(term) .
+<requires>: uid @reverse .
+<roleName>: string @index(term) .

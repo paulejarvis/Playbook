@@ -1,0 +1,69 @@
+{
+ "name": "process crush rocks",
+ "description": "crushing rocks",
+ "startsWith": {
+  "executedBy": {
+   "name": "rock crusher",
+   "employee": {
+    "roleName": "rock crusher"
+   }
+  },
+  "causes": [
+   {
+    "subject": {
+     "name": "rock crusher",
+     "employee": {
+      "roleName": "rock crusher"
+     }
+    },
+    "predicate": "has",
+    "stateObject": {
+     "name": "hammer",
+     "description": "a rock crushing hammer, very heavy",
+     "tool": {
+
+     }
+    }
+   }
+  ],
+  "name": "get hammer",
+  "description": "go get the hammer from the hammer room",
+  "followingStep": {
+   "causes": [
+    {
+     "subject": {
+      "name": "rocks",
+      "description": "the rocks",
+      "thing": {
+       "props": {
+        "kind": "granite"
+       }
+      }
+     },
+     "predicate": "are",
+     "stateName": "crushed"
+    }
+   ],
+   "requires": [
+    {
+     "subject": {
+      "name": "rock crusher",
+      "employee": {
+       "roleName": "rock crusher"
+      }
+     },
+     "predicate": "has",
+     "stateObject": {
+      "name": "hammer",
+      "description": "A rock crushing hammer, very heavy",
+      "tool": {
+
+      }
+     }
+    }
+   ],
+   "name": "crush rocks",
+   "description": "start crushing rocks"
+  }
+ }
+}

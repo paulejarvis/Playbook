@@ -1,13 +1,23 @@
 {
- "github.com/fullstorydev/gorepoman": {
-  "git-remote": "https://github.com/fullstorydev/gorepoman",
-  "current-version-git-hash": "638ce770f4f5aed867c09a1e910976b967749719",
-  "content-hash": "f963542ba8de9784e2705e850c5202794e6724a4"
+ "github.com/dgraph-io/dgo": {
+  "git-remote": "https://github.com/dgraph-io/dgo",
+  "current-version-git-hash": "95299da439fdb3190e94dda8e27276fde80435d6",
+  "content-hash": "3e788164b7d6377b43095003c55d427fa2dd4359"
  },
  "github.com/golang/protobuf": {
   "git-remote": "https://github.com/golang/protobuf",
   "current-version-git-hash": "b5d812f8a3706043e23a9cd5babf2e5423744d30",
   "content-hash": "3a5c81dd4976fe77f36e027f57207fc914b1b542"
+ },
+ "github.com/google/uuid": {
+  "git-remote": "https://github.com/google/uuid",
+  "current-version-git-hash": "0cd6bf5da1e1c83f8b45653022c74f71af0538a4",
+  "content-hash": "c5ceb584bde69138e27dac8a975d00c3f7909e60"
+ },
+ "github.com/jhump/protoreflect": {
+  "git-remote": "https://github.com/jhump/protoreflect",
+  "current-version-git-hash": "8bfeffd6b414f964a56d8a0118b5f80906a59def",
+  "content-hash": "19504930d3f9d27aa1eef39c498c110b1305f2a2"
  },
  "github.com/pkg/errors": {
   "git-remote": "https://github.com/pkg/errors",
@@ -31,7 +41,7 @@
  },
  "google.golang.org/grpc": {
   "git-remote": "https://github.com/grpc/grpc-go",
-  "current-version-git-hash": "a1a84e16d09f20f76a940a7706b544967af44d2d",
-  "content-hash": "a2a3135f92c6688fad25d7ceee85c1f197723d8a"
+  "current-version-git-hash": "29adad9d713c49699aa06b073674a951ee22aee8",
+  "content-hash": "6715d1043782d01991f9cd257cdcce175d0ec27a"
  }
 }
