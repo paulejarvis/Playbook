@@ -1,3 +1,8 @@
+// Package ontology provides a way of representing process/ nodes
+// as go types. This provides the ability to write methods on top
+// of node types/ collections of nodes. Node types in ontology
+// will always correctly serialize themselves so that they can be sent
+// to the front end.
 package ontology
 
 type uid string
