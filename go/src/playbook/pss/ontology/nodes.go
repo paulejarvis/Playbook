@@ -1,7 +1,7 @@
 // Package ontology provides a way of representing process/ nodes
 // as go types. This provides the ability to write methods on top
-// of node types/ collections of nodes. Node types in ontology
-// will always correctly serialize themselves so that they can be sent
+// of node types/ collections of nodes. Node types in ontology are able
+// to translate themselves into proto-api types and be correctly sent
 // to the front end.
 package ontology
 
