@@ -1,0 +1,311 @@
+@prefix : <urn:playbook#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix state: <urn:playbook#state> .
+@base <urn:playbook> .
+
+<urn:playbook> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#causedBy
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#causedBy> rdf:type owl:ObjectProperty ;
+                                                                                owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#causes> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#causes
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#causes> rdf:type owl:ObjectProperty ,
+                                                                                       owl:FunctionalProperty ,
+                                                                                       owl:InverseFunctionalProperty ;
+                                                                              rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                                                              rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#doesNotPossess
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#doesNotPossess> rdf:type owl:ObjectProperty ;
+                                                                                      rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#has
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#has> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasMedia
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasMedia> rdf:type owl:ObjectProperty ;
+                                                                                owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#mediaFor> ;
+                                                                                rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                                                                rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasNot
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasNot> rdf:type owl:ObjectProperty ;
+                                                                              rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasSubject
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#hasSubject> rdf:type owl:ObjectProperty ;
+                                                                                  owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#subjectOf> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#is
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#is> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> ;
+                                                                          rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#isNot
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#isNot> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> ;
+                                                                             rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#locatedAt
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#locatedAt> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> ;
+                                                                                 rdf:type owl:TransitiveProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#mediaFor
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#mediaFor> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#next
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#next> rdf:type owl:ObjectProperty ;
+                                                                            owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#previous> ;
+                                                                            rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#decision> ,
+                                                                                        <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media> ,
+                                                                                        <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                                                            rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#decision> ,
+                                                                                       <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media> ,
+                                                                                       <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#notLocatedAt
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#notLocatedAt> rdf:type owl:ObjectProperty ;
+                                                                                    rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#notScheduled
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#notScheduled> rdf:type owl:ObjectProperty ;
+                                                                                    rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#ownedBy
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#ownedBy> rdf:type owl:ObjectProperty ;
+                                                                               owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#owns> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#owns
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#owns> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#process> ;
+                                                                            rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#possesses
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#possesses> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#previous
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#previous> rdf:type owl:ObjectProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#requiredBy
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#requiredBy> rdf:type owl:ObjectProperty ;
+                                                                                  owl:inverseOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#requires> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#requires
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#requires> rdf:type owl:ObjectProperty ,
+                                                                                         owl:FunctionalProperty ,
+                                                                                         owl:InverseFunctionalProperty ;
+                                                                                rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                                                                rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#scheduled
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#scheduled> rdf:type owl:ObjectProperty ;
+                                                                                 rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#statePredicate> rdf:type owl:ObjectProperty ,
+                                                                                               owl:FunctionalProperty ;
+                                                                                      rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect> ;
+                                                                                      rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#state> ,
+                                                                                                 <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#subjectOf
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#subjectOf> rdf:type owl:ObjectProperty ,
+                                                                                          owl:FunctionalProperty ,
+                                                                                          owl:InverseFunctionalProperty ;
+                                                                                 rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                 rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIn
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIn> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                               rdf:type owl:TransitiveProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                               rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIs
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIs> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                               rdf:type owl:TransitiveProperty ;
+                                                                               rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                               rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIsNot
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingIsNot> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                  rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingNotIn
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingNotIn> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                                  rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                  rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingOff
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingOff> rdf:type owl:ObjectProperty ;
+                                                                                rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                                rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingOn
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingOn> rdf:type owl:ObjectProperty ;
+                                                                               rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> ;
+                                                                               rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                               rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thingRelation> rdf:type owl:ObjectProperty ,
+                                                                                              owl:FunctionalProperty ,
+                                                                                              owl:InverseFunctionalProperty ;
+                                                                                     rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                     rdfs:range <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#contentId
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#contentId> rdf:type owl:DatatypeProperty ;
+                                                                                 rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ,
+                                                                                             <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> ;
+                                                                                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#description
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#description> rdf:type owl:DatatypeProperty ;
+                                                                                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#id
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#id> rdf:type owl:DatatypeProperty ;
+                                                                          rdfs:domain owl:Thing ;
+                                                                          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#kind
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#kind> rdf:type owl:DatatypeProperty ;
+                                                                            rdfs:domain owl:Thing ;
+                                                                            rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#label
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#label> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#mediaUrl
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#mediaUrl> rdf:type owl:DatatypeProperty ;
+                                                                                rdfs:domain <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media> ;
+                                                                                rdfs:range xsd:anyURI .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#uid
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#uid> rdf:type owl:DatatypeProperty ;
+                                                                           rdfs:domain owl:Thing ;
+                                                                           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#decision
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#decision> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                                                                rdfs:comment "A decision is a special kind of step that requires the user choose between alternate paths. This is different than a step with multiple next steps, as the implication is to do all of them." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#effect> rdf:type owl:Class ;
+                                                                              rdfs:comment "Effects are essentially bnodes that reference things, and connect them to states (with statePredicates). The concept of the effect is that it repersents the specific thing a step causes or requires. It also enables sharing between steps (helpful for linking processes together)" .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#media> rdf:type owl:Class ;
+                                                                             rdfs:comment "Media is a container for attaching images/videos etc to steps and processes It exists as a linked list so that we can preserve image order." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#person
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#person> rdf:type owl:Class ;
+                                                                              rdfs:comment "A person repersents a literal person in an organization" .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#process
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#process> rdf:type owl:Class ;
+                                                                               rdfs:comment "A process is a named collection of ordered steps." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#role
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#role> rdf:type owl:Class ;
+                                                                            rdfs:comment "A role is a job a person can have, vis-a-vis a process." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#state
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#state> rdf:type owl:Class ;
+                                                                             rdfs:comment "A state is a descriptor of the state that an effect can cause a thing to be in.  e.g. \"Created\". StatePredicates can also have thing objects (e.g. Has Hammer) so state is a node to ensure that it is always aligned." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> rdf:type owl:Class ;
+                                                                            rdfs:comment "Step is an action inside a process it can be followed by 0 or more steps." .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#thing> rdf:type owl:Class ;
+                                                                             rdfs:comment "A thing repersents anything in the domain of an organization (sas tools, physical objects, calendars, approvals etc)" .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#workflow
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#workflow> rdf:type owl:Class ;
+                                                                                rdfs:comment "Workflows are named groups of processes" .
+
+
+###  urn:absolute:playbook#handoff
+<urn:absolute:playbook#handoff> rdf:type owl:Class ;
+                                rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-8#step> ;
+                                rdfs:comment "A handoff is a special kind of step where the role fufilling the process changes. For example \"sales does 1-3, finance does 4-10\"" .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi

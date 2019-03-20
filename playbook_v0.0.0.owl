@@ -1,0 +1,174 @@
+@prefix : <urn:absolute:playbook#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <urn:absolute:playbook> .
+
+<urn:absolute:playbook> rdf:type owl:Ontology ;
+                         owl:versionIRI <urn:absolute:v0.0.0> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:context_verb
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:context_verb> rdf:type owl:AnnotationProperty .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:state_verb
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:state_verb> rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#causes
+:causes rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#does
+:does rdf:type owl:AnnotationProperty ;
+      rdfs:subPropertyOf :pb:effects .
+
+
+###  urn:absolute:playbook#does_not_exist_in
+:does_not_exist_in rdf:type owl:AnnotationProperty ;
+                   rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:context_verb> .
+
+
+###  urn:absolute:playbook#exists_in
+:exists_in rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:context_verb> .
+
+
+###  urn:absolute:playbook#has
+:has rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#is_in
+:is_in rdf:type owl:AnnotationProperty ;
+       rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:state_verb> .
+
+
+###  urn:absolute:playbook#is_not_in
+:is_not_in rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#pb:state_verb> .
+
+
+###  urn:absolute:playbook#pb
+:pb rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:causes
+:pb:causes rdf:type owl:AnnotationProperty ;
+           rdfs:subPropertyOf :pb:effects .
+
+
+###  urn:absolute:playbook#pb:contains
+:pb:contains rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf :pb:effects .
+
+
+###  urn:absolute:playbook#pb:effects
+:pb:effects rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:executed_by
+:pb:executed_by rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:followed_by
+:pb:followed_by rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:is
+:pb:is rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:preceeded_by
+:pb:preceeded_by rdf:type owl:AnnotationProperty .
+
+
+###  urn:absolute:playbook#pb:requires
+:pb:requires rdf:type owl:AnnotationProperty ;
+             rdfs:subPropertyOf rdfs:comment .
+
+
+###  urn:absolute:playbook#pb:starts_with
+:pb:starts_with rdf:type owl:AnnotationProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#employee
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#employee> rdf:type owl:Class ;
+                                                                                rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#executor
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#executor> rdf:type owl:Class ;
+                                                                                :does <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#process> ,
+                                                                                      <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> ;
+                                                                                :is_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> ;
+                                                                                :is_not_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#machine
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#machine> rdf:type owl:Class ;
+                                                                               rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> rdf:type owl:Class ;
+                                                                              :exists_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> ;
+                                                                              :is_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> ;
+                                                                              :is_not_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#person
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#person> rdf:type owl:Class ;
+                                                                              :has :qualification ;
+                                                                              :pb:is <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#employee> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#process
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#process> rdf:type owl:Class ;
+                                                                               :pb:starts_with <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> rdf:type owl:Class ;
+                                                                             :exists_in <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> ;
+                                                                             :pb:is <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> rdf:type owl:Class ;
+                                                                            :pb:causes <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#state> ;
+                                                                            :pb:executed_by <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#executor> ;
+                                                                            :pb:followed_by <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> ;
+                                                                            :pb:preceeded_by <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#step> ;
+                                                                            :pb:requires <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#thing
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#thing> rdf:type owl:Class ;
+                                                                             rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#tool
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#tool> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#object> .
+
+
+###  http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#workflow
+<http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#workflow> rdf:type owl:Class ;
+                                                                                :pb:contains <http://www.semanticweb.org/hdh/ontologies/2019/2/untitled-ontology-3#process> .
+
+
+###  urn:absolute:playbook#qualification
+:qualification rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
