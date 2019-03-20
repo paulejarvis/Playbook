@@ -5,12 +5,15 @@
 // to the front end.
 package ontology
 
+// TODO(hdh) write transformation logic so that a process can be "written" to db (updates and creates)
+// TODO(hdh) write transformation logic so that a process can be read from the db
+// TODO(hdh) write transformation logic so that a process can be sent along via proto
+
 type uid string
 
 type NodeType string
 const (
 	NTProcess  NodeType = "process"
-
 )
 
 type Process struct {
