@@ -19,6 +19,11 @@
   "current-version-git-hash": "8bfeffd6b414f964a56d8a0118b5f80906a59def",
   "content-hash": "19504930d3f9d27aa1eef39c498c110b1305f2a2"
  },
+ "github.com/knakk/rdf": {
+  "git-remote": "https://github.com/knakk/rdf",
+  "current-version-git-hash": "8521bf4c5042825653ef324b371a4491818b986d",
+  "content-hash": "b67e4c517428e021192ad9c4b436ccff465bf0c0"
+ },
  "github.com/pkg/errors": {
   "git-remote": "https://github.com/pkg/errors",
   "current-version-git-hash": "27936f6d90f9c8e1145f11ed52ffffbfdb9e0af7",
