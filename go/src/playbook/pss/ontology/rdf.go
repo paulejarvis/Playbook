@@ -8,11 +8,11 @@ import (
 )
 
 const (
-	classTag = "class"
-	predTag  = "pred"
-	propTag  = "prop"
+	classTag   = "class"
+	predTag    = "pred"
+	propTag    = "prop"
 	predMapTag = "predMap"
-	propMapTag  = "propMap"
+	propMapTag = "propMap"
 )
 
 func ToRDF(n node) ([]rdf.Triple, error) {
@@ -48,11 +48,10 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 		if err != nil {
 			return errors.Wrap(err, "failed to get IRI from node")
 		}
-		out = append(out, rdf.Triple{Subj: subject, Pred: pred, Obj:  obj})
+		out = append(out, rdf.Triple{Subj: subject, Pred: pred, Obj: obj})
 
 		return nil
 	}
-
 
 	serializeProp := func(fieldVal reflect.Value, p string) error {
 		obj, err := rdf.NewLiteral(fieldVal.Interface())
@@ -88,7 +87,7 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			}
 			trip := rdf.Triple{
 				Subj: subject,
-				Pred: mustIRI(propClass),
+				Pred: mustIRI(string(propClass)),
 				Obj:  mustLiteral(c),
 			}
 			out = append(out, trip)
@@ -108,7 +107,7 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 
 			case reflect.Ptr:
 				if err := serializePred(fieldVal, pre); err != nil {
-				 return nil, errors.Wrap(err, "failed to serialize predicate")
+					return nil, errors.Wrap(err, "failed to serialize predicate")
 				}
 
 			case reflect.Struct:
@@ -123,30 +122,32 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			continue
 		}
 
-
 		_, ok = tags.Lookup(predMapTag)
 		if ok {
 			for _, k := range fieldVal.MapKeys() {
-				if err := serializePred(fieldVal.MapIndex(k), k.String()); err != nil {
+				if err := serializePred(fieldVal.MapIndex(k), fmt.Sprintf("pred:%s",k.String())); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize predicate")
 				}
 			}
-
 		}
 
 		pro, ok := tags.Lookup(propTag)
 		if ok {
+			if reflect.Zero(fieldVal.Type()).Interface() == fieldVal.Interface() {
+				continue
+			}
+
 			if err := serializeProp(fieldVal, pro); err != nil {
 				return nil, errors.Wrap(err, "failed to serialize prop")
 			}
+
 			continue
 		}
-
 
 		_, ok = tags.Lookup(propMapTag)
 		if ok {
 			for _, k := range fieldVal.MapKeys() {
-				if err := serializeProp(fieldVal.MapIndex(k), k.String()); err != nil {
+				if err := serializeProp(fieldVal.MapIndex(k), fmt.Sprintf("prop:%s",k.String())); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize property")
 				}
 			}

@@ -24,9 +24,6 @@ type node interface {
 	getIri() (rdf.IRI, error)
 }
 
-type stateThing interface {
-	isStateThing()
-}
 
 type Process struct {
 	Id          uid     `class:"class:process"`
@@ -42,7 +39,6 @@ func (v *Process) getIri() (rdf.IRI, error) {
 }
 
 type Effect struct {
-	Type       class
 	Id         uid                   `class:"class:effect"`
 	RequiredBy []*Step               `pred:"pred:requiredBy"`
 	CausedBy   []*Step               `pred:"pred:causedBy"`
@@ -88,6 +84,10 @@ func (v *Role) getIri() (rdf.IRI, error) {
 	return rdf.NewIRI(fmt.Sprintf("id:%s", v.Id))
 }
 
+type stateThing interface {
+	isStateThing()
+}
+
 type State struct {
 	Id    uid    `class:"class:state"`
 	Label string `prop:"prop:label"`
@@ -96,6 +96,8 @@ type State struct {
 func (v *State) getIri() (rdf.IRI, error) {
 	return rdf.NewIRI(fmt.Sprintf("id:%s", v.Id))
 }
+
+func (v *State) isStateThing() {}
 
 type Thing struct {
 	Id          uid                    `class:"class:thing"`
@@ -108,6 +110,8 @@ type Thing struct {
 func (v *Thing) getIri() (rdf.IRI, error) {
 	return rdf.NewIRI(fmt.Sprintf("id:%s", v.Id))
 }
+
+func (v *Thing) isStateThing() {}
 
 type Workflow struct {
 	Type        class
