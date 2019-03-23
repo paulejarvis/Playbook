@@ -33,6 +33,10 @@ func main() {
 		log.Fatalf("failed to write to repo %s", err)
 	}
 
+	if err := server.ReadResource(repo,n); err != nil {
+		log.Fatalf("couldn't read! %s, err")
+	}
+
 	fmt.Println("SUCCESS")
 
 }

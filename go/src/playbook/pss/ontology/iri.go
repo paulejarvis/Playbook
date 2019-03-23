@@ -56,6 +56,7 @@ const (
 	propDescription prop = "description"
 	propLabel       prop = "label"
 	propMediaUrl    prop = "mediaUrl"
+
 )
 
 var validProps = map[prop]bool{

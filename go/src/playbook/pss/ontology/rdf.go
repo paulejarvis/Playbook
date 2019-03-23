@@ -21,9 +21,9 @@ const dl = "dl"
 
 // DL iris are the internal format we use for disco lab resource IDs
 type dlIRI struct {
-	relType string // pred, prop, class etc
-	relName string // next, owns etc
-	relSubName string // arbitrary map keys
+	nameSpace string // id, pred, prop, class etc
+	name      string // next, owns, literal-id etc
+	subName   string // arbitrary map keys
 }
 
 func toiriString(relType, relName, relSubname string) string {
@@ -35,19 +35,20 @@ func toiriString(relType, relName, relSubname string) string {
 }
 
 func fromIriString(iri string) (*dlIRI, error) {
+	fmt.Println(iri)
 	domainParts := strings.Split(iri, ":")
 	if len(domainParts) > 1 && domainParts[0] == dl {
-		relParts := strings.Split(iri, "/")
+		relParts := strings.Split(domainParts[1], "/")
 		if len(relParts) < 2 || len(relParts) > 3 {
 			return nil, errors.New(fmt.Sprintf("%s is not a valid dl iri tag (wrong length)", iri))
 		}
 		out := &dlIRI{
-			relType: relParts[0],
-			relName: relParts[1],
+			nameSpace: relParts[0],
+			name:      relParts[1],
 		}
 
 		if len(relParts) == 3 {
-			out.relSubName = relParts[3]
+			out.subName = relParts[2]
 		}
 
 		return out, nil
@@ -99,7 +100,7 @@ func ToRDF(n Resource) ([]rdf.Triple, error) {
 	serializeProp := func(fieldVal reflect.Value, name, subname string) error {
 		obj, err := rdf.NewLiteral(fieldVal.Interface())
 		if err != nil {
-			return errors.Wrapf(err, "unable to get rdf literal from prop %s", p)
+			return errors.Wrapf(err, "unable to get rdf literal from prop %s", name)
 		}
 
 		pred, err := rdf.NewIRI(toiriString(propTag, name, subname))
@@ -130,7 +131,7 @@ func ToRDF(n Resource) ([]rdf.Triple, error) {
 			}
 			trip := rdf.Triple{
 				Subj: subject,
-				Pred: mustIRI(toiriString(classTag,"instanceOf", "")),
+				Pred: mustIRI(toiriString(propTag, string(propClass), "")),
 				Obj:  mustLiteral(c),
 			}
 			out = append(out, trip)
@@ -201,8 +202,93 @@ func ToRDF(n Resource) ([]rdf.Triple, error) {
 	return out, nil
 }
 
-
+// BindTermToField parses a predicate and an object and binds them to the correct
+// field on a resource, for a given set of struct tags.
 func BindTermToField(r Resource, predicate, object rdf.Term) error {
-	p := predicate.String()
+	pIri, err := fromIriString(predicate.String())
+	if err != nil {
+		return errors.Wrap(err, "failed to get IRI from predicate")
+	}
 
+	if pIri.nameSpace == propTag && pIri.name == string(propClass) {
+		// Class is weirdly encoded as a shortcut, so need to carve out exception.
+		return nil
+	}
+
+	rVal := reflect.ValueOf(r)
+	if  rVal.Kind() != reflect.Ptr || rVal.Elem().Kind() != reflect.Struct || !rVal.Elem().CanSet() {
+		return errors.New("resource must be a settable struct ptr")
+	}
+	rVal = rVal.Elem()
+	rType := rVal.Type()
+
+	for i := 0; i < rType.NumField(); i++ {
+		// Iterate through the struct fields until we find the correctly tagged relationship,
+		// then set it.
+		field := rType.Field(i)
+		fVal := rVal.Field(i)
+
+		tagVal, ok := field.Tag.Lookup(pIri.nameSpace)
+		if !ok {
+			// Wrong kind of relationship
+			continue
+		}
+
+		if tagVal != pIri.name {
+			// Write kind of relationship, but wrong relationship
+			continue
+		}
+
+		var oVal reflect.Value
+		switch pIri.nameSpace {
+		case propTag, propMapTag:
+
+			// In this case our object is a literal
+			oLit, ok := object.(rdf.Literal)
+			if !ok {
+				return errors.New("object should be an rdf.literal, it is not")
+			}
+			o, err := oLit.Typed()
+			if err != nil {
+				return errors.Wrap(err, "failed to convert o to proper type")
+			}
+
+			oVal = reflect.ValueOf(o)
+
+		case predTag, predMapTag:
+			// In this case our object is an iri pointing to an entity
+			// represented as a go type, we have to make a new version of that type and set its id.
+			// TODO(henry) this is going to explode, make it not
+			oVal = reflect.New(fVal.Type().Elem().Elem())
+			objectIdIri, err := fromIriString(object.String())
+			if err != nil {
+				return errors.Wrap(err, "failed to parse object iri")
+			}
+			oVal.Elem().FieldByName("Id").Set(reflect.ValueOf(objectIdIri.name))
+		}
+
+		// Now actually set the value at the field.
+		switch pIri.nameSpace {
+		case propTag, predTag:
+			if fVal.Type().Kind() == reflect.Slice {
+				slice := fVal
+				if fVal.IsNil() {
+					slice = reflect.MakeSlice(fVal.Type(), 0,1)
+				}
+				fVal.Set(reflect.Append(slice, oVal))
+			} else {
+				fVal.Set(oVal)
+			}
+			return nil
+
+		case propMapTag, predMapTag:
+			if fVal.IsNil() {
+				fVal.Set(reflect.MakeMap(fVal.Type()))
+			}
+			fVal.SetMapIndex(reflect.ValueOf(pIri.subName), oVal)
+			return nil
+		}
+
+	}
+	return nil
 }

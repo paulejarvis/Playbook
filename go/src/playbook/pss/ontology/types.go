@@ -5,10 +5,6 @@
 // to the front end.
 package ontology
 
-import (
-	"fmt"
-)
-
 // TODO(hdh) write transformation logic so that a process can be "written" to db (updates and creates)
 // TODO(hdh) write transformation logic so that a process can be read from the db
 // TODO(hdh) write transformation logic so that a process can be sent along via proto
@@ -21,8 +17,8 @@ type Resource interface {
 	GetIri() string
 }
 
-func iriFromId(id string) string {
-	return fmt.Sprintf("%s:id/%s", dl, id)
+func idToIri(id string) string {
+	return toiriString("id", id, "")
 }
 
 type Process struct {
@@ -35,7 +31,7 @@ type Process struct {
 }
 
 func (v *Process) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type Effect struct {
@@ -47,7 +43,7 @@ type Effect struct {
 }
 
 func (v *Effect) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type Media struct {
@@ -59,7 +55,7 @@ type Media struct {
 }
 
 func (v *Media) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type Person struct {
@@ -70,7 +66,7 @@ type Person struct {
 }
 
 func (v *Person) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type Role struct {
@@ -81,7 +77,7 @@ type Role struct {
 }
 
 func (v *Role) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type stateThing interface {
@@ -94,7 +90,7 @@ type State struct {
 }
 
 func (v *State) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 func (v *State) isStateThing() {}
@@ -108,7 +104,7 @@ type Thing struct {
 }
 
 func (v *Thing) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 func (v *Thing) isStateThing() {}
@@ -122,7 +118,7 @@ type Workflow struct {
 }
 
 func (v *Workflow) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type StepLike interface {
@@ -134,18 +130,24 @@ type StepLike interface {
 }
 
 type Step struct {
-	Id          string     `class:"step"`
-	Label       string     `prop:"label"`
-	Description string     `prop:"description"`
-	Next        []StepLike `pred:"next"`
-	OwnedBy     *Process   `pred:"ownedBy"`
-	Requires    []*Effect  `pred:"requires"`
-	Causes      []*Effect  `pred:"causes"`
-	HasMedia    *Media     `pred:"hasMedia"`
+	Id            string     `class:"step"`
+	Label         string     `prop:"label"`
+	Description   string     `prop:"description"`
+
+	OwnedBy       *Process   `pred:"ownedBy"`
+	Requires      []*Effect  `pred:"requires"`
+	Causes        []*Effect  `pred:"causes"`
+	HasMedia      *Media     `pred:"hasMedia"`
+
+	// A step can either be followed by 0 or more steps,
+	// OR 0 or more decisions, but not both
+	// TODO(henry) enforce this somehow
+	NextSteps     []*Step          `pred:"next"`
+	Decisions     map[string]*Step  `predMap:"next"`
 }
 
 func (v *Step) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
 
 type Decision struct {
@@ -157,5 +159,5 @@ type Decision struct {
 }
 
 func (v *Decision) GetIri() string {
-	return iriFromId(v.Id)
+	return idToIri(v.Id)
 }
