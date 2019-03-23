@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"flag"
 	"fmt"
 	"github.com/knakk/sparql"
@@ -19,7 +20,7 @@ func main() {
 	}
 
 	n := &ontology.Process{
-		Id:          "PROCESS1",
+		Id:          "PROCESS2",
 		Label:       "Label",
 		Description: "Description",
 		Owns: []*ontology.Step{
@@ -33,9 +34,13 @@ func main() {
 		log.Fatalf("failed to write to repo %s", err)
 	}
 
-	if err := server.ReadResource(repo,n); err != nil {
+	p := &ontology.Process{Id:"PROCESS2"}
+	if err := server.ReadResource(repo, p); err != nil {
 		log.Fatalf("couldn't read! %s, err")
 	}
+
+	b, _ := json.MarshalIndent(p, "", " ")
+	fmt.Println(string(b))
 
 	fmt.Println("SUCCESS")
 

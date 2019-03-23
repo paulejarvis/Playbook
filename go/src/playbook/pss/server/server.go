@@ -35,16 +35,20 @@ func WriteRDF(repo *sparql.Repo, r ontology.Resource) (*sparql.Results, error) {
 
 func ReadResource(repo *sparql.Repo, r ontology.Resource) error {
 	// TODO(henry): pagination needs to happen sooner rather than later...
-	res, err := repo.Query(fmt.Sprintf("select ?p ?o where {<%s> ?p ?o}", r.GetIri()))
+	fmt.Println(r.GetIri())
+	res, err := repo.Query(fmt.Sprintf("select ?p ?o where {<%s> ?p ?o} limit 100", r.GetIri()))
 	if err != nil {
 		return errors.Wrap(err, "failed to query")
 	}
 
+	var pairs []ontology.PredObjPair
 	sols := res.Solutions()
-	for i := range sols {
-		for k, v := range sols[i] {
-			fmt.Println(k, v.String())
-		}
+	for _, pair := range sols {
+		pairs = append(pairs, ontology.PredObjPair{P: pair["p"], O: pair["o"] })
+	}
+
+	if err := ontology.DecodeTerms(r, pairs); err != nil {
+		return errors.Wrap(err, "failed to decode")
 	}
 
 	return nil

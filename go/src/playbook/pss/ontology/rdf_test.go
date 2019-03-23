@@ -66,7 +66,7 @@ func TestToRDF(t *testing.T) {
 }
 
 
-func TestBindTermToField(t *testing.T) {
+func TestDecodeTerm(t *testing.T) {
 	cases := []struct{
 		n Resource
 		pred rdf.Term
@@ -80,6 +80,14 @@ func TestBindTermToField(t *testing.T) {
 			e: &Process{Description:"Description"},
 			getter: func(r Resource) interface{} {
 				return r.(*Process).Description
+			},
+		},
+		{n: &Process{},
+			pred: mustIRI(toiriString(predTag, string(predNext), "")),
+			obj: mustIRI("dl:id/foooo"),
+			e: &Process{Start:&Step{Id:"foooo"}},
+			getter: func(r Resource) interface{} {
+				return r.(*Process).Start.Id
 			},
 		},
 		{n: &Step{},
@@ -102,7 +110,7 @@ func TestBindTermToField(t *testing.T) {
 	}
 
 	for i, c := range cases {
-		if err := BindTermToField(c.n, c.pred, c.obj); err != nil {
+		if err := DecodeTerm(c.n, c.pred, c.obj); err != nil {
 			t.Fatal(err)
 		}
 		testutils.Equal(t,c.getter(c.e), c.getter(c.n), "mismatch...%d", i)

@@ -202,9 +202,24 @@ func ToRDF(n Resource) ([]rdf.Triple, error) {
 	return out, nil
 }
 
-// BindTermToField parses a predicate and an object and binds them to the correct
+type PredObjPair struct {
+	P rdf.Term
+	O rdf.Term
+}
+
+func DecodeTerms(r Resource, pairs []PredObjPair) error {
+	for _, p := range pairs {
+		if err := DecodeTerm(r, p.P, p.O); err != nil {
+			return errors.Wrap(err, "failed to decode term")
+		}
+	}
+	return nil
+}
+
+
+// DecodeTerm parses a predicate and an object and binds them to the correct
 // field on a resource, for a given set of struct tags.
-func BindTermToField(r Resource, predicate, object rdf.Term) error {
+func DecodeTerm(r Resource, predicate, object rdf.Term) error {
 	pIri, err := fromIriString(predicate.String())
 	if err != nil {
 		return errors.Wrap(err, "failed to get IRI from predicate")
@@ -255,11 +270,18 @@ func BindTermToField(r Resource, predicate, object rdf.Term) error {
 
 			oVal = reflect.ValueOf(o)
 
-		case predTag, predMapTag:
+		case predTag,predMapTag:
 			// In this case our object is an iri pointing to an entity
 			// represented as a go type, we have to make a new version of that type and set its id.
 			// TODO(henry) this is going to explode, make it not
-			oVal = reflect.New(fVal.Type().Elem().Elem())
+
+			if fVal.Type().Kind() == reflect.Map || fVal.Type().Kind() == reflect.Slice {
+				oVal = reflect.New(fVal.Type().Elem().Elem())
+			} else {
+				oVal = reflect.New(fVal.Type().Elem())
+			}
+
+
 			objectIdIri, err := fromIriString(object.String())
 			if err != nil {
 				return errors.Wrap(err, "failed to parse object iri")
