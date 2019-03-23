@@ -24,14 +24,13 @@ type node interface {
 	getIri() (rdf.IRI, error)
 }
 
-
 type Process struct {
-	Id          uid     `class:"class:process"`
-	Label       string  `prop:"prop:label"`
-	Description string  `prop:"prop:description"`
-	Owns        []*Step `pred:"pred:owns"`
-	Start       *Step   `pred:"pred:next"`
-	CanBeDoneBy []*Role `pred:"pred:canBeDoneBy"`
+	Id          uid     `class:"process"`
+	Label       string  `prop:"label"`
+	Description string  `prop:"description"`
+	Owns        []*Step `pred:"owns"`
+	Start       *Step   `pred:"next"`
+	CanBeDoneBy []*Role `pred:"canBeDoneBy"`
 }
 
 func (v *Process) getIri() (rdf.IRI, error) {
@@ -39,11 +38,11 @@ func (v *Process) getIri() (rdf.IRI, error) {
 }
 
 type Effect struct {
-	Id         uid                   `class:"class:effect"`
-	RequiredBy []*Step               `pred:"pred:requiredBy"`
-	CausedBy   []*Step               `pred:"pred:causedBy"`
-	HasSubject *Thing                `pred:"pred:hasSubject"`
-	StateThing map[string]stateThing `predMap:""`
+	Id         uid                   `class:"effect"`
+	RequiredBy []*Step               `pred:"requiredBy"`
+	CausedBy   []*Step               `pred:"causedBy"`
+	HasSubject *Thing                `pred:"hasSubject"`
+	StateThing map[string]stateThing `predMap:"state"`
 }
 
 func (v *Effect) getIri() (rdf.IRI, error) {
@@ -51,11 +50,11 @@ func (v *Effect) getIri() (rdf.IRI, error) {
 }
 
 type Media struct {
-	Id       uid    `class:"class:media"`
-	Label    string `prop:"prop:label"`
-	Url      string `prop:"prop:url"`
-	Next     *Media `pred:"pred:next"`
-	Previous *Media `pred:"pred:previous"`
+	Id       uid    `class:"media"`
+	Label    string `prop:"label"`
+	Url      string `prop:"url"`
+	Next     *Media `pred:"next"`
+	Previous *Media `pred:"previous"`
 }
 
 func (v *Media) getIri() (rdf.IRI, error) {
@@ -63,10 +62,10 @@ func (v *Media) getIri() (rdf.IRI, error) {
 }
 
 type Person struct {
-	Id          uid     `class:"class:person"`
-	Label       string  `prop:"prop:label"`
-	Description string  `prop:"prop:description"`
-	CanFill     []*Role `pred:"pred:canFill"`
+	Id          uid     `class:"person"`
+	Label       string  `prop:"label"`
+	Description string  `prop:"description"`
+	CanFill     []*Role `pred:"canFill"`
 }
 
 func (v *Person) getIri() (rdf.IRI, error) {
@@ -74,10 +73,10 @@ func (v *Person) getIri() (rdf.IRI, error) {
 }
 
 type Role struct {
-	Id            uid       `class:"class:role"`
-	Label         string    `prop:"prop:label"`
-	Description   string    `prop:"prop:description"`
-	CanBeFilledBy []*Person `pred:"pred:canBeFilledBy"`
+	Id            uid       `class:"role"`
+	Label         string    `prop:"label"`
+	Description   string    `prop:"description"`
+	CanBeFilledBy []*Person `pred:"canBeFilledBy"`
 }
 
 func (v *Role) getIri() (rdf.IRI, error) {
@@ -89,8 +88,8 @@ type stateThing interface {
 }
 
 type State struct {
-	Id    uid    `class:"class:state"`
-	Label string `prop:"prop:label"`
+	Id    uid    `class:"state"`
+	Label string `prop:"label"`
 }
 
 func (v *State) getIri() (rdf.IRI, error) {
@@ -100,10 +99,10 @@ func (v *State) getIri() (rdf.IRI, error) {
 func (v *State) isStateThing() {}
 
 type Thing struct {
-	Id          uid                    `class:"class:thing"`
-	Label       string                 `prop:"prop:label"`
-	Description string                 `prop:"prop:description"`
-	SubjectOf   []*Effect              `pred:"pred:subjectOf"`
+	Id          uid                    `class:"thing"`
+	Label       string                 `prop:"label"`
+	Description string                 `prop:"description"`
+	SubjectOf   []*Effect              `pred:"subjectOf"`
 	Properties  map[string]interface{} `propMap:""`
 }
 
@@ -115,16 +114,15 @@ func (v *Thing) isStateThing() {}
 
 type Workflow struct {
 	Type        class
-	Id          uid        `class:"class:workflow"`
-	Label       string     `prop:"prop:label"`
-	Description string     `prop:"prop:description"`
-	Owns        []*Process `pred:"pred:owns"`
+	Id          uid        `class:"workflow"`
+	Label       string     `prop:"label"`
+	Description string     `prop:"description"`
+	Owns        []*Process `pred:"owns"`
 }
 
 func (v *Workflow) getIri() (rdf.IRI, error) {
 	return rdf.NewIRI(fmt.Sprintf("id:%s", v.Id))
 }
-
 
 type StepLike interface {
 	Next() []struct {
@@ -135,14 +133,14 @@ type StepLike interface {
 }
 
 type Step struct {
-	Id          uid        `class:"class:step"`
-	Label       string     `prop:"prop:label"`
-	Description string     `prop:"prop:description"`
-	Next        []StepLike `pred:"pred:next"`
-	OwnedBy     *Process   `pred:"pred:ownedBy"`
-	Requires    []*Effect  `pred:"pred:requires"`
-	Causes      []*Effect  `pred:"pred:causes"`
-	HasMedia    *Media     `pred:"pred:hasMedia"`
+	Id          uid        `class:"step"`
+	Label       string     `prop:"label"`
+	Description string     `prop:"description"`
+	Next        []StepLike `pred:"next"`
+	OwnedBy     *Process   `pred:"ownedBy"`
+	Requires    []*Effect  `pred:"requires"`
+	Causes      []*Effect  `pred:"causes"`
+	HasMedia    *Media     `pred:"hasMedia"`
 }
 
 func (v *Step) getIri() (rdf.IRI, error) {
@@ -150,11 +148,11 @@ func (v *Step) getIri() (rdf.IRI, error) {
 }
 
 type Decision struct {
-	Id          uid                 `class:"class:step"`
-	Label       string              `prop:"prop:label"`
-	Description string              `prop:"prop:description"`
+	Id          uid                 `class:"step"`
+	Label       string              `prop:"label"`
+	Description string              `prop:"description"`
 	OwnedBy     *Process            `pred:"ownedBy"`
-	Next        map[string]StepLike `predMap:""`
+	Next        map[string]StepLike `predMap:"next"`
 }
 
 func (v *Decision) getIri() (rdf.IRI, error) {

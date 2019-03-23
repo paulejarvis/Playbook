@@ -26,14 +26,15 @@ func mustLiteral(v interface{}) rdf.Literal {
 type pred string
 
 const (
-	predNext       pred = "pred:next"
-	predRequires   pred = "pred:requires"
-	predRequiredBy pred = "pred:requiredBy"
-	predCauses     pred = "pred:causes"
-	predCausedBy     pred = "pred:causedBy"
-	predHasSubject pred = "pred:hasSubject"
-	predOwns       pred = "pred:owns"
-	predCanBeDoneBy pred = "pred:canBeDoneBy"
+	predNext        pred = "next"
+	predRequires    pred = "requires"
+	predRequiredBy  pred = "requiredBy"
+	predCauses      pred = "causes"
+	predCausedBy    pred = "causedBy"
+	predHasSubject  pred = "hasSubject"
+	predState       pred = "state"
+	predOwns        pred = "owns"
+	predCanBeDoneBy pred = "canBeDoneBy"
 )
 
 var validPredicates = map[pred]bool{
@@ -43,7 +44,7 @@ var validPredicates = map[pred]bool{
 	predHasSubject: true,
 	predOwns:       true,
 	predRequiredBy: true,
-	predCausedBy: true,
+	predCausedBy:   true,
 }
 
 // prop holds all the possible predicates that point to literal
@@ -51,10 +52,10 @@ var validPredicates = map[pred]bool{
 type prop string
 
 const (
-	propClass       prop = "prop:class"
-	propDescription prop = "prop:description"
-	propLabel       prop = "prop:label"
-	propMediaUrl    prop = "prop:mediaUrl"
+	propClass       prop = "class"
+	propDescription prop = "description"
+	propLabel       prop = "label"
+	propMediaUrl    prop = "mediaUrl"
 )
 
 var validProps = map[prop]bool{
@@ -67,15 +68,15 @@ var validProps = map[prop]bool{
 type class string
 
 const (
-	classProcess class = "class:process"
-	classStep          = "class:step"
-	classEffect        = "class:effect"
-	classMedia = "class:media"
+	classProcess class = "process"
+	classStep          = "step"
+	classEffect        = "effect"
+	classMedia         = "media"
 )
 
 var validClasses = map[class]bool{
 	classProcess: true,
 	classStep:    true,
 	classEffect:  true,
-	classMedia: true,
+	classMedia:   true,
 }

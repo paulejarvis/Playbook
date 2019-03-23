@@ -7,6 +7,7 @@ import (
 	"reflect"
 )
 
+// Tags
 const (
 	classTag   = "class"
 	predTag    = "pred"
@@ -14,6 +15,16 @@ const (
 	predMapTag = "predMap"
 	propMapTag = "propMap"
 )
+
+const dl = "dl"
+
+func toiriString(t string, p ...string) string {
+	base := fmt.Sprintf("%s:%s", dl, t)
+	for _, v := range p {
+		base = fmt.Sprintf("%s/%s", base, v)
+	}
+	return base
+}
 
 func ToRDF(n node) ([]rdf.Triple, error) {
 	var out []rdf.Triple
@@ -33,13 +44,13 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 		nType = nType.Elem()
 	}
 
-	serializePred := func(fieldVal reflect.Value, p string) error {
+	serializePred := func(fieldVal reflect.Value, p ...string) error {
 		objAn, ok := fieldVal.Interface().(node)
 		if !ok {
 			return errors.New("predicates can only refer to addressable nodes")
 		}
 
-		pred, err := rdf.NewIRI(p)
+		pred, err := rdf.NewIRI(toiriString(predTag, p...))
 		if err != nil {
 			return errors.Wrap(err, "failed to get iri from pred")
 		}
@@ -53,13 +64,13 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 		return nil
 	}
 
-	serializeProp := func(fieldVal reflect.Value, p string) error {
+	serializeProp := func(fieldVal reflect.Value, p ...string) error {
 		obj, err := rdf.NewLiteral(fieldVal.Interface())
 		if err != nil {
 			return errors.Wrapf(err, "unable to get rdf literal from prop %s", p)
 		}
 
-		pred, err := rdf.NewIRI(p)
+		pred, err := rdf.NewIRI(toiriString(propTag, p...))
 		if err != nil {
 			return errors.Wrap(err, "failed to get iri from prop")
 		}
@@ -87,7 +98,7 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			}
 			trip := rdf.Triple{
 				Subj: subject,
-				Pred: mustIRI(string(propClass)),
+				Pred: mustIRI(toiriString(classTag)),
 				Obj:  mustLiteral(c),
 			}
 			out = append(out, trip)
@@ -122,10 +133,10 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			continue
 		}
 
-		_, ok = tags.Lookup(predMapTag)
+		mt, ok := tags.Lookup(predMapTag)
 		if ok {
 			for _, k := range fieldVal.MapKeys() {
-				if err := serializePred(fieldVal.MapIndex(k), fmt.Sprintf("pred:%s",k.String())); err != nil {
+				if err := serializePred(fieldVal.MapIndex(k), mt, k.String()); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize predicate")
 				}
 			}
@@ -144,10 +155,10 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			continue
 		}
 
-		_, ok = tags.Lookup(propMapTag)
+		mt, ok = tags.Lookup(propMapTag)
 		if ok {
 			for _, k := range fieldVal.MapKeys() {
-				if err := serializeProp(fieldVal.MapIndex(k), fmt.Sprintf("prop:%s",k.String())); err != nil {
+				if err := serializeProp(fieldVal.MapIndex(k), mt, k.String()); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize property")
 				}
 			}
