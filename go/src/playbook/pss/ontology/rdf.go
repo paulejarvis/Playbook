@@ -5,6 +5,7 @@ import (
 	"github.com/knakk/rdf"
 	"github.com/pkg/errors"
 	"reflect"
+	"strings"
 )
 
 // Tags
@@ -18,18 +19,49 @@ const (
 
 const dl = "dl"
 
-func toiriString(t string, p ...string) string {
-	base := fmt.Sprintf("%s:%s", dl, t)
-	for _, v := range p {
-		base = fmt.Sprintf("%s/%s", base, v)
+// DL iris are the internal format we use for disco lab resource IDs
+type dlIRI struct {
+	relType string // pred, prop, class etc
+	relName string // next, owns etc
+	relSubName string // arbitrary map keys
+}
+
+func toiriString(relType, relName, relSubname string) string {
+	base := fmt.Sprintf("%s:%s/%s", dl, relType, relName)
+	if relSubname != "" {
+		base = fmt.Sprintf("%s/%s", base, relSubname)
 	}
 	return base
 }
 
-func ToRDF(n node) ([]rdf.Triple, error) {
+func fromIriString(iri string) (*dlIRI, error) {
+	domainParts := strings.Split(iri, ":")
+	if len(domainParts) > 1 && domainParts[0] == dl {
+		relParts := strings.Split(iri, "/")
+		if len(relParts) < 2 || len(relParts) > 3 {
+			return nil, errors.New(fmt.Sprintf("%s is not a valid dl iri tag (wrong length)", iri))
+		}
+		out := &dlIRI{
+			relType: relParts[0],
+			relName: relParts[1],
+		}
+
+		if len(relParts) == 3 {
+			out.relSubName = relParts[3]
+		}
+
+		return out, nil
+
+	}
+
+	return nil, errors.New(fmt.Sprintf("%s is not a valid dl iri tag (wrong prefix)", iri))
+}
+
+func ToRDF(n Resource) ([]rdf.Triple, error) {
 	var out []rdf.Triple
 
-	subject, err := n.getIri()
+
+	subject, err := rdf.NewIRI(n.GetIri())
 	if err != nil {
 		return nil, errors.Wrap(err, "failed to get IRI")
 	}
@@ -44,33 +76,33 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 		nType = nType.Elem()
 	}
 
-	serializePred := func(fieldVal reflect.Value, p ...string) error {
-		objAn, ok := fieldVal.Interface().(node)
+	serializePred := func(fieldVal reflect.Value, name, subname string) error {
+		objAn, ok := fieldVal.Interface().(Resource)
 		if !ok {
 			return errors.New("predicates can only refer to addressable nodes")
 		}
 
-		pred, err := rdf.NewIRI(toiriString(predTag, p...))
+		pred, err := rdf.NewIRI(toiriString(predTag, name, subname))
 		if err != nil {
 			return errors.Wrap(err, "failed to get iri from pred")
 		}
 
-		obj, err := objAn.getIri()
+		obj, err := rdf.NewIRI(objAn.GetIri())
 		if err != nil {
-			return errors.Wrap(err, "failed to get IRI from node")
+			return errors.Wrap(err, "failed to get IRI from Resource")
 		}
 		out = append(out, rdf.Triple{Subj: subject, Pred: pred, Obj: obj})
 
 		return nil
 	}
 
-	serializeProp := func(fieldVal reflect.Value, p ...string) error {
+	serializeProp := func(fieldVal reflect.Value, name, subname string) error {
 		obj, err := rdf.NewLiteral(fieldVal.Interface())
 		if err != nil {
 			return errors.Wrapf(err, "unable to get rdf literal from prop %s", p)
 		}
 
-		pred, err := rdf.NewIRI(toiriString(propTag, p...))
+		pred, err := rdf.NewIRI(toiriString(propTag, name, subname))
 		if err != nil {
 			return errors.Wrap(err, "failed to get iri from prop")
 		}
@@ -98,7 +130,7 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			}
 			trip := rdf.Triple{
 				Subj: subject,
-				Pred: mustIRI(toiriString(classTag)),
+				Pred: mustIRI(toiriString(classTag,"instanceOf", "")),
 				Obj:  mustLiteral(c),
 			}
 			out = append(out, trip)
@@ -111,18 +143,18 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 			switch fType.Kind() {
 			case reflect.Slice:
 				for vi := 0; vi < fieldVal.Len(); vi++ {
-					if err := serializePred(fieldVal.Index(vi), pre); err != nil {
+					if err := serializePred(fieldVal.Index(vi), pre, ""); err != nil {
 						return nil, errors.Wrap(err, "failed to serialize predicate")
 					}
 				}
 
 			case reflect.Ptr:
-				if err := serializePred(fieldVal, pre); err != nil {
+				if err := serializePred(fieldVal, pre, ""); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize predicate")
 				}
 
 			case reflect.Struct:
-				if err := serializePred(fieldVal, pre); err != nil {
+				if err := serializePred(fieldVal, pre, ""); err != nil {
 					return nil, errors.Wrap(err, "failed to serialize predicate")
 				}
 
@@ -148,7 +180,7 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 				continue
 			}
 
-			if err := serializeProp(fieldVal, pro); err != nil {
+			if err := serializeProp(fieldVal, pro, ""); err != nil {
 				return nil, errors.Wrap(err, "failed to serialize prop")
 			}
 
@@ -167,4 +199,10 @@ func ToRDF(n node) ([]rdf.Triple, error) {
 	}
 
 	return out, nil
+}
+
+
+func BindTermToField(r Resource, predicate, object rdf.Term) error {
+	p := predicate.String()
+
 }

@@ -8,11 +8,11 @@ import (
 
 func TestToRDF(t *testing.T) {
 	cases := []struct {
-		n node
+		n Resource
 		e []rdf.Triple
 	}{
 		{n: &Process{
-			Id:          uid("PROCESS1"),
+			Id:          "PROCESS1",
 			Label:       "Label",
 			Description: "Description",
 			Owns: []*Step{
@@ -32,7 +32,7 @@ func TestToRDF(t *testing.T) {
 			}},
 
 		{n: &Effect{
-			Id:         uid("EFFECT1"),
+			Id:         "EFFECT1",
 			RequiredBy: []*Step{{Id: "STEP1"}},
 			CausedBy:   []*Step{{Id: "STEP2"}},
 			HasSubject: &Thing{Id: "THING1"},
