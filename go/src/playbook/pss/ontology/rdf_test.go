@@ -56,7 +56,7 @@ func TestToRDF(t *testing.T) {
 
 		for j, a := range actual {
 			e := c.e[j]
-			t.Logf("checking %s vs %s", a.Serialize(rdf.NTriples), e.Serialize(rdf.NTriples))
+			t.Logf("checking \n%s vs \n%s", e.Serialize(rdf.NTriples), a.Serialize(rdf.NTriples))
 			testutils.Equal(t, e.Subj, a.Subj, "subjects are not equal %d.%d", i, j)
 			testutils.Equal(t, e.Pred, a.Pred, "predicates are not equal  %d.%d", i, j)
 			testutils.Equal(t, e.Obj, a.Obj, "objects are not equal  %d.%d", i, j)
