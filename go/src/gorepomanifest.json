@@ -19,10 +19,20 @@
   "current-version-git-hash": "8bfeffd6b414f964a56d8a0118b5f80906a59def",
   "content-hash": "19504930d3f9d27aa1eef39c498c110b1305f2a2"
  },
+ "github.com/knakk/digest": {
+  "git-remote": "https://github.com/knakk/digest",
+  "current-version-git-hash": "fd45becddc49e7c583e46de4af3b9b3b37e629e3",
+  "content-hash": "118dd7fea0ebcc063815ca463bab0798df7af60e"
+ },
  "github.com/knakk/rdf": {
   "git-remote": "https://github.com/knakk/rdf",
   "current-version-git-hash": "8521bf4c5042825653ef324b371a4491818b986d",
   "content-hash": "b67e4c517428e021192ad9c4b436ccff465bf0c0"
+ },
+ "github.com/knakk/sparql": {
+  "git-remote": "https://github.com/knakk/sparql",
+  "current-version-git-hash": "79486f028902f9f172d23b1eba312b72006b38a1",
+  "content-hash": "78041bb7d97d8a57625ba09f068100be753f8b18"
  },
  "github.com/pkg/errors": {
   "git-remote": "https://github.com/pkg/errors",
