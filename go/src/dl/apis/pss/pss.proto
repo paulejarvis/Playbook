@@ -1,0 +1,59 @@
+syntax = "proto3";
+
+package pss;
+
+// Message Ref references a resources
+message Ref {
+    string id = 1;
+}
+
+// Message resource contains an instance of a resource
+message Resource {
+    oneof resource {
+        Process process = 1;
+        Step step = 2;
+    }
+}
+
+message Process {
+    string id = 1;
+    string label = 2;
+    string description = 3;
+    repeated Ref owns = 4;
+    Ref start = 5;
+    repeated Ref can_be_done_by = 6;
+}
+
+// Subtype for enforcing one-of inside of step
+message Decisions {
+    map<string, Ref> decisions = 1;
+}
+
+// Subtype for enforcing one-of inside of step
+message NextSteps {
+    repeated Ref next_steps = 1;
+}
+
+message Step {
+    string id = 1;
+    string label = 2;
+    string description = 3;
+    oneof next {
+        Decisions decisions = 4;
+        NextSteps next_steps = 5;
+    }
+    Ref owned_by = 6;
+    repeated Ref requires = 7;
+    repeated Ref causes = 8;
+    Ref has_media = 9;
+}
+
+message GetProcessResp {
+    string process_id = 1;
+    map<string, Resource> refs = 2;
+}
+
+message GetStepResp {
+    string step_id = 1;
+    map<string, Resource> refs = 2;
+}
